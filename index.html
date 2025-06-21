@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Truth Ministries - Illuminating Paths</title>
+    <title>Global Truth Ministries - Illuminating Paths of Faith</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #005A9C; /* A deeper, more corporate blue */
+            --secondary-color: #D4AF37; /* A richer gold/bronze */
+            --accent-color: #34A853; /* Vibrant Green for giving/action */
+            --light-bg: #F8F9FA;
+            --dark-bg: #2C3E50; /* Darker, sophisticated footer/nav */
+            --text-color: #333333;
+            --light-text-color: #F8F9FA;
+            --border-radius: 8px;
+            --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s ease;
+        }
+
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa; /* Light, clean background */
-            color: #343a40; /* Darker text for readability */
-            line-height: 1.7;
+            background-color: #FFFFFF; /* Cleaner white background */
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 16px;
         }
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1300px; /* Slightly wider for modern feel */
             margin: auto;
             overflow: hidden;
             padding: 0 20px;
@@ -23,199 +38,331 @@
 
         /* Header & Hero Section */
         header {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x500.png?text=Inspiring+Community+Background') no-repeat center center/cover; /* Placeholder for a grand image */
-            color: #fff;
-            padding: 60px 20px;
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('https://via.placeholder.com/1600x600.png?text=Building+Faith+Together') no-repeat center center/cover;
+            color: var(--light-text-color);
+            padding: 80px 20px;
             text-align: center;
-            border-bottom: #ffd700 5px solid; /* Gold accent */
+            border-bottom: var(--secondary-color) 6px solid;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Angled bottom */
+            margin-bottom: -30px; /* Overlap with nav slightly */
         }
         header h1 {
-            margin: 0;
-            font-size: 3.5em;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            font-family: 'Playfair Display', serif; /* Elegant serif for main title */
+            font-size: 4.5em; /* Larger */
+            font-weight: 700;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+            margin: 0 0 15px 0;
         }
         header p.subtitle {
-            font-size: 1.5em;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
             margin-top: 10px;
-            font-style: italic;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        .header-cta-button { /* Distinct from other CTAs */
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.4em;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 50px; /* Pill shape */
+            text-decoration: none;
+            margin-top: 40px;
+            transition: var(--transition-speed), transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .header-cta-button:hover {
+            background-color: #2c8e44; /* Darker green */
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
         /* Navigation */
         nav {
-            background: #343a40; /* Dark, sophisticated nav */
+            background: var(--dark-bg);
             padding: 1rem 0;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
-        nav .nav-button, nav .give-button {
+        nav .nav-button, nav .give-button-nav {
+            font-family: 'Montserrat', sans-serif;
             background: transparent;
-            color: #f8f9fa;
-            border: 1px solid transparent;
-            padding: 12px 25px;
-            margin: 5px 10px;
+            color: var(--light-text-color);
+            border: none;
+            padding: 15px 30px;
+            margin: 0 8px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: var(--border-radius);
             font-size: 1.1em;
-            transition: all 0.3s ease;
+            transition: var(--transition-speed);
             text-transform: uppercase;
-            font-weight: bold;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
         nav .nav-button:hover, nav .nav-button.active {
-            background: #ffd700; /* Gold accent */
-            color: #343a40;
-            border-color: #ffd700;
+            background: var(--secondary-color);
+            color: var(--dark-bg);
         }
-        nav .give-button {
-            background-color: #28a745; /* Green for giving */
-            border-color: #28a745;
+        nav .give-button-nav {
+            background-color: var(--accent-color);
+            border: 2px solid var(--accent-color);
             color: white;
         }
-        nav .give-button:hover {
-            background-color: #218838;
-            border-color: #1e7e34;
+        nav .give-button-nav:hover {
+            background-color: #2c8e44;
+            border-color: #2c8e44;
         }
 
         /* Tab Content */
         .tab-content {
             display: none;
-            padding: 30px 20px;
-            background: #fff;
-            margin-top: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 50px 30px; /* More padding */
+            background: #FFFFFF;
+            margin-top: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
         }
         .tab-content.active {
             display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .tab-content h2 {
-            font-size: 2.2em;
-            color: #0056b3; /* Deep blue for headings */
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #ffd700; /* Gold accent */
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em; /* Larger section titles */
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary-color);
             text-align: center;
+            letter-spacing: 1px;
+        }
+        .tab-content h3 { /* Sub-headings within tabs */
+             font-family: 'Montserrat', sans-serif;
+             font-size: 1.8em;
+             color: var(--primary-color);
+             margin-top: 30px;
+             margin-bottom: 15px;
         }
 
-        /* Comparison Section Styling */
+
+        /* Comparison Section - Card-Based Design */
         .comparison-section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         .passage-container {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid; /* Using grid for better alignment */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive columns */
             gap: 30px;
-            margin-top: 20px;
+            margin-top: 25px;
         }
-        .passage {
-            flex: 1;
-            min-width: 350px; /* Wider passages */
-            background: #f8f9fa; /* Light background for passages */
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #dee2e6; /* Subtle border */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        .passage { /* Card style */
+            background: var(--light-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .passage h3 {
+        .passage:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .passage h4 { /* Passage titles */
+            font-family: 'Montserrat', sans-serif;
             margin-top: 0;
-            color: #007bff; /* Primary blue */
-            font-size: 1.4em;
-            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
         }
         .passage p {
             font-size: 1em;
             text-align: left;
+            margin-bottom: 12px;
         }
         .passage-source {
             font-style: italic;
             font-size: 0.9em;
-            color: #6c757d; /* Muted color for source */
+            color: #777;
             text-align: right;
-            margin-top: 15px;
+            margin-top: 20px;
+            display: block;
         }
 
         /* Giving Section Styling */
         .giving-section {
-            background: #e9ecef; /* Slightly different background for emphasis */
-            padding: 30px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #007bb5 100%); /* Gradient background */
+            color: var(--light-text-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
             text-align: center;
             margin-top: 30px;
+            box-shadow: var(--box-shadow);
         }
         .giving-section h2 {
-            color: #28a745; /* Green for giving title */
-            border-bottom-color: #28a745;
+            color: var(--secondary-color); /* Gold title on dark blue */
+            border-bottom-color: var(--secondary-color);
+            font-size: 2.5em;
         }
         .giving-section p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            font-family: 'Montserrat', sans-serif;
+            opacity: 0.9;
         }
         .donation-options {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 20px; /* Increased gap */
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
-        .donation-button {
-            background-color: #007bff;
-            color: white;
+        .donation-button { /* More prominent donation buttons */
+            background-color: var(--secondary-color);
+            color: var(--dark-bg);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
             border: none;
-            padding: 15px 30px;
+            padding: 18px 35px;
             font-size: 1.1em;
-            border-radius: 5px;
+            border-radius: 50px; /* Pill shape */
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: var(--transition-speed), transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
         }
         .donation-button:hover {
-            background-color: #0056b3;
+            background-color: #c09d2e; /* Darker gold */
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .custom-amount {
+            margin-top: 20px;
         }
         .custom-amount input {
-            padding: 15px;
+            padding: 15px 20px;
             font-size: 1em;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: 2px solid var(--secondary-color);
+            border-radius: var(--border-radius);
             margin-right: 10px;
-            width: 150px;
+            width: 200px;
+            background: var(--light-bg);
+            color: var(--text-color);
         }
+        .custom-amount .donation-button { /* For the custom amount submit */
+            background-color: var(--accent-color);
+            color: white;
+        }
+        .custom-amount .donation-button:hover {
+            background-color: #2c8e44;
+        }
+
+        /* General Call to Action Button Styling */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-bg);
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: var(--transition-speed), transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .cta-button:hover {
+            background-color: #c09d2e;
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Mission Section List Styling */
+        #ourMission ul {
+            list-style: none; /* Remove default bullets */
+            padding-left: 0;
+        }
+        #ourMission ul li {
+            font-size: 1.1em;
+            padding: 10px 0 10px 35px; /* Space for icon */
+            position: relative;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+        #ourMission ul li:before { /* Unicode icon placeholder */
+            content: "✨"; /* Example Unicode character; for real site use SVG/FontAwesome */
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: var(--secondary-color);
+            font-size: 1.3em;
+        }
+         #ourMission ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Testimonial Cards */
+        .testimonial-card {
+            background: var(--light-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+            border-left: 5px solid var(--secondary-color);
+        }
+        .testimonial-card p:first-child {
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .testimonial-card p.attribution {
+            text-align: right;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1em;
+        }
+
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px 20px;
-            background: #343a40; /* Consistent dark footer */
-            color: #f8f9fa;
-            margin-top: 40px;
+            padding: 50px 20px;
+            background: var(--dark-bg);
+            color: var(--light-text-color);
+            margin-top: 50px;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%); /* Angled top */
+            padding-top: 70px; /* Adjust for clip-path */
         }
         footer p {
-            margin: 5px 0;
+            margin: 8px 0;
+            font-family: 'Montserrat', sans-serif;
+            opacity: 0.8;
         }
         footer a {
-            color: #ffd700; /* Gold links */
+            color: var(--secondary-color);
             text-decoration: none;
+            transition: color var(--transition-speed);
         }
         footer a:hover {
+            color: #fff;
             text-decoration: underline;
         }
-
-        /* Call to Action Button (General) */
-        .cta-button {
-            display: inline-block;
-            background-color: #ffd700; /* Gold */
-            color: #343a40;
-            padding: 12px 25px;
-            font-size: 1.1em;
-            font-weight: bold;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 15px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .cta-button:hover {
-            background-color: #e6c300;
-            transform: translateY(-2px);
+        footer .footer-logo-placeholder {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
         }
 
     </style>
@@ -223,60 +370,62 @@
 <body>
     <header>
         <h1>Global Truth Ministries</h1>
-        <p class="subtitle">Bringing Light & Understanding to the Nations Through the Word</p>
-        <a href="#giving" onclick="openTab(event, 'giving', true)" class="cta-button" style="background-color: #28a745; color: white; margin-top: 30px; font-size: 1.3em; padding: 15px 35px;">Partner With Us - Give Today!</a>
+        <p class="subtitle">Illuminating Paths of Faith & Fostering Universal Understanding</p>
+        <a href="#giving" onclick="openTab(event, 'giving', true)" class="header-cta-button">Partner in Our Vision ➔</a>
     </header>
 
     <nav>
-        <button class="nav-button" onclick="openTab(event, 'welcome')">Welcome</button>
-        <button class="nav-button" onclick="openTab(event, 'exploringTexts')">Exploring Sacred Texts</button>
-        <button class="nav-button" onclick="openTab(event, 'ourMission')">Our Mission & Impact</button>
-        <button class="nav-button" onclick="openTab(event, 'insights')">Insights & Testimonies</button>
-        <button class="give-button" onclick="openTab(event, 'giving', true)">Give Online</button>
+        <button class="nav-button" onclick="openTab(event, 'welcome')">🕊️ Welcome</button>
+        <button class="nav-button" onclick="openTab(event, 'exploringTexts')">📖 Sacred Texts</button>
+        <button class="nav-button" onclick="openTab(event, 'ourMission')">🌍 Our Mission</button>
+        <button class="nav-button" onclick="openTab(event, 'insights')">💡 Insights</button>
+        <button class="give-button-nav" onclick="openTab(event, 'giving', true)">💖 Give Online</button>
     </nav>
 
     <div class="container">
         <div id="welcome" class="tab-content">
-            <h2>Welcome to Our Ministry!</h2>
-            <p>We are overjoyed to welcome you to Global Truth Ministries! Our heart is to reach every corner of the world with messages of hope, understanding, and divine wisdom. We believe in the power of sacred texts to transform lives and bridge divides.</p>
-            <p>Here, you can explore profound teachings, understand diverse spiritual perspectives, and connect with a community dedicated to growing in faith and knowledge. We are committed to providing resources that enlighten and inspire. Your journey of discovery starts here!</p>
-            <p>Join us as we delve into the rich tapestry of sacred writings. Your support helps us continue this vital work of outreach and education. Consider partnering with us today!</p>
-            <a href="#giving" onclick="openTab(event, 'giving', true)" class="cta-button">Support Our Vision</a>
+            <h2>Welcome to a Journey of Discovery!</h2>
+            <p>It is with immense joy that we welcome you to Global Truth Ministries! Our core mission is to extend messages of divine hope, profound understanding, and timeless wisdom to every individual, in every corner of the globe. We firmly believe in the transformative power inherent in sacred texts to reshape lives, heal hearts, and bridge divides.</p>
+            <p>Within this digital sanctuary, you are invited to explore profound teachings, cultivate a richer understanding of diverse spiritual perspectives, and connect with a vibrant community passionately dedicated to growth in faith and knowledge. Our commitment is to provide resources that not only enlighten but also inspire lasting change. Your personal journey of discovery and spiritual enrichment begins right here, right now!</p>
+            <p>We encourage you to join us as we delve into the magnificent tapestry of sacred writings. Your invaluable support empowers us to continue this vital work of global outreach and spiritual education. Please consider partnering with us today to touch more lives.</p>
+            <div style="text-align:center; margin-top:30px;">
+                <a href="#giving" onclick="openTab(event, 'giving', true)" class="cta-button" style="background-color: var(--accent-color); color: white;">Support Our Global Vision ✨</a>
+            </div>
         </div>
 
         <div id="exploringTexts" class="tab-content">
             <h2>Exploring Sacred Texts: Bible & Quran</h2>
-            <p>Understanding the foundations of faith begins with exploring the texts that have guided millions. Here we present comparative passages to foster deeper insight and respect for different traditions. This study is offered in the spirit of learning and interfaith understanding, as part of our commitment to universal truth.</p>
+            <p>A true understanding of faith's foundations blossoms when we explore the sacred texts that have guided billions across millennia. Here, we humbly present comparative passages, aiming to foster deeper insight, mutual respect, and a spirit of unity among diverse traditions. This study is offered in the spirit of shared learning and interfaith harmony, reflecting our unwavering commitment to uncovering universal truths.</p>
             
             <div class="comparison-section">
-                <h3>Theme: The Story of Creation</h3>
+                <h3>Theme: The Divine Act of Creation</h3>
                 <div class="passage-container">
                     <div class="passage">
-                        <h4>Bible: Genesis</h4>
+                        <h4>📜 Bible: Genesis - The Beginning</h4>
                         <p>"In the beginning God created the heavens and the earth. Now the earth was formless and empty, darkness was over the surface of the deep, and the Spirit of God was hovering over the waters. And God said, 'Let there be light,' and there was light."</p>
-                        <p class="passage-source">Genesis 1:1-3 (Referenced from KJV/NIV context, Blue Letter Bible for depth)</p>
+                        <p class="passage-source">Genesis 1:1-3 (Referenced from KJV/NIV, explored via Blue Letter Bible)</p>
                     </div>
                     <div class="passage">
-                        <h4>Quran: Al-A'raf</h4>
-                        <p>"Indeed, your Lord is Allah, who created the heavens and earth in six days and then established Himself above the Throne. He covers the night with the day, [another night] chasing it rapidly; and [He created] the sun, the moon, and the stars, subjected by His command..."</p>
-                        <p class="passage-source">Quran 7:54 (Referenced from Sahih International context, Corpus Quran for linguistic study)</p>
+                        <h4>📜 Quran: Al-A'raf - The Creation</h4>
+                        <p>"Indeed, your Lord is Allah, who created the heavens and earth in six periods and then established Himself above the Throne. He covers the night with the day, [another night] chasing it rapidly; and [He created] the sun, the moon, and the stars, subjected by His command..."</p>
+                        <p class="passage-source">Quran 7:54 (Referenced from Sahih International, studied via Corpus Quran)</p>
                     </div>
                 </div>
             </div>
              <div class="comparison-section">
-                <h3>Theme: On Charity and Giving</h3>
+                <h3>Theme: The Essence of Charity and Giving</h3>
                 <div class="passage-container">
                     <div class="passage">
-                        <h4>Bible: Teachings on Giving</h4>
+                        <h4>💖 Bible: Teachings on Generosity</h4>
                         <p>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." (2 Corinthians 9:7, NIV)</p>
                         <p>"Bring the whole tithe into the storehouse, that there may be food in my house. Test me in this,” says the Lord Almighty, “and see if I will not throw open the floodgates of heaven and pour out so much blessing that there will not be room enough to store it.” (Malachi 3:10, NIV)</p>
-                        <p class="passage-source">Biblical principles of stewardship and generosity.</p>
+                        <p class="passage-source">Biblical principles of stewardship, joyful giving, and divine blessing.</p>
                     </div>
                     <div class="passage">
-                        <h4>Quran: Teachings on Charity (Zakat & Sadaqah)</h4>
+                        <h4>💖 Quran: Teachings on Zakat & Sadaqah</h4>
                         <p>"And establish prayer and give zakah, and whatever good you put forward for yourselves - you will find it with Allah. Indeed, Allah of what you do, is Seeing." (Quran 2:110, Sahih International)</p>
                          <p>"Those who spend their wealth [in Allah's way] by night and by day, secretly and publicly - they will have their reward with their Lord. And no fear will there be concerning them, nor will they grieve." (Quran 2:274, Sahih International)</p>
-                        <p class="passage-source">Quranic injunctions on charity and its spiritual rewards.</p>
+                        <p class="passage-source">Quranic injunctions on obligatory and voluntary charity, and its spiritual rewards.</p>
                     </div>
                 </div>
             </div>
@@ -284,78 +433,88 @@
         </div>
 
         <div id="ourMission" class="tab-content">
-            <h2>Our Mission & Global Impact</h2>
-            <p>Global Truth Ministries is dedicated to spreading knowledge, fostering understanding, and supporting communities worldwide. Our mission is threefold:</p>
+            <h2>Our Mission & Worldwide Impact 🌍</h2>
+            <p>Global Truth Ministries is passionately dedicated to disseminating knowledge, cultivating profound understanding, and actively supporting communities across the globe. Our sacred mission is guided by three core pillars:</p>
             <ul>
-                <li><strong>Educate:</strong> Provide resources for in-depth study of sacred texts and spiritual traditions.</li>
-                <li><strong>Unite:</strong> Build bridges of understanding and respect between different faith communities.</li>
-                <li><strong>Serve:</strong> Support charitable initiatives that uplift the needy and spread compassion (funded by your generous giving!).</li>
+                <li><strong>Educate & Enlighten:</strong> Provide accessible, in-depth resources for the comprehensive study of sacred texts and diverse spiritual traditions.</li>
+                <li><strong>Unite & Harmonize:</strong> Construct enduring bridges of mutual understanding, respect, and fellowship between different faith communities worldwide.</li>
+                <li><strong>Serve & Uplift:</strong> Champion and support impactful charitable initiatives that uplift the needy, spread compassion, and manifest divine love in action (generously funded by your partnership!).</li>
             </ul>
-            <h3>How Your Partnership Makes a Difference:</h3>
-            <p>Your generous contributions enable us to:</p>
+            <h3>How Your Faithful Partnership Ignites Change:</h3>
+            <p>Your generous contributions are the lifeblood of our ministry, enabling us to:</p>
             <ul>
-                <li>Develop and expand our online educational platforms.</li>
-                <li>Host interfaith dialogues and workshops.</li>
-                <li>Translate valuable spiritual resources into multiple languages.</li>
-                <li>Support humanitarian aid projects in underprivileged regions. (Placeholder for impact stories)</li>
-                <li>Maintain this very website and our digital outreach efforts.</li>
+                <li>Innovate and expand our dynamic online educational platforms and digital libraries.</li>
+                <li>Organize and facilitate transformative interfaith dialogues, seminars, and global workshops.</li>
+                <li>Translate invaluable spiritual resources into a multitude of languages, reaching more hearts.</li>
+                <li>Fuel humanitarian aid projects that bring tangible relief and hope to underprivileged regions.</li>
+                <li>Sustain this very website and amplify our digital outreach efforts to inspire millions.</li>
             </ul>
-            <p>Become a vital part of our mission. Your gift, no matter the size, makes a tangible impact!</p>
-            <div style="text-align: center; margin-top: 30px;">
-                 <a href="#giving" onclick="openTab(event, 'giving', true)" class="cta-button" style="background-color: #28a745; color: white; font-size: 1.2em;">Give Now & Change Lives</a>
+            <p>Become an indispensable part of our cherished mission. Your gift, irrespective of its size, creates ripples of tangible, positive impact across the globe!</p>
+            <div style="text-align: center; margin-top: 40px;">
+                 <a href="#giving" onclick="openTab(event, 'giving', true)" class="cta-button" style="background-color: var(--accent-color); color: white; font-size: 1.3em; padding: 18px 35px;">Give Now & Transform Lives 🙏</a>
             </div>
         </div>
         
         <div id="insights" class="tab-content">
-            <h2>Inspirational Insights & Testimonies</h2>
+            <h2>Illuminating Insights & Heartfelt Testimonies 💡</h2>
             <div class="comparison-section">
-                <h3>Words of Wisdom</h3>
-                <p>"The journey of a thousand miles begins with a single step. So too, does the journey into profound spiritual understanding. Be patient, be persistent, and be open." - Ministry Reflection</p>
-                <p>"In giving, we receive. In understanding, we are understood. In loving, we are loved. This is the divine economy." - Ministry Reflection</p>
+                <h3>Words of Divine Wisdom</h3>
+                <p style="font-size: 1.2em; text-align:center; font-style:italic; color: #555; margin-bottom: 30px;">"The longest journey is the journey inwards. Let the ancient words be your map, and faith your compass." - GTM Reflection</p>
             </div>
             <div class="comparison-section">
-                <h3>Community Voices (Testimonies - Placeholders)</h3>
-                <div class="passage">
-                    <p>"This ministry's resources on comparative texts opened my eyes to the shared values in different faiths. It's been a blessing to my spiritual journey!" - A. Follower</p>
+                <h3>Voices from Our Community:</h3>
+                <div class="testimonial-card">
+                    <p>"Global Truth Ministries' comparative text studies have been a revelation! It opened my eyes to the beautiful shared values in different faiths and has profoundly enriched my spiritual journey. A true blessing!"</p>
+                    <p class="attribution">- Eleanor V., Canada</p>
                 </div>
-                <div class="passage">
-                    <p>"I was looking for a deeper understanding of scripture, and I found it here. The way texts are presented side-by-side is incredibly helpful." - S. Seeker</p>
+                <div class="testimonial-card">
+                    <p>"I was searching for a deeper, more nuanced understanding of scripture, and I found an incredible resource here. The way texts are presented side-by-side, with thoughtful commentary, is exceptionally helpful and respectful."</p>
+                    <p class="attribution">- Samuel K., United Kingdom</p>
                 </div>
-                <p style="margin-top:20px;"><em>These are illustrative testimonies. Real ministries often feature genuine stories from their community.</em></p>
+                 <div class="testimonial-card">
+                    <p>"The 'Our Mission' section truly inspired me to contribute. Seeing how donations are used for education and aid makes me feel part of something bigger. Thank you, GTM!"</p>
+                    <p class="attribution">- Aisha B., USA</p>
+                </div>
+                <p style="margin-top:20px; text-align:center;"><em>These testimonials are illustrative. Real ministries often feature genuine stories from their community.</em></p>
             </div>
             <div style="text-align: center; margin-top: 30px;">
-                 <a href="#giving" onclick="openTab(event, 'giving', true)" class="cta-button">Support More Insights Like These</a>
+                 <a href="#giving" onclick="openTab(event, 'giving', true)" class="cta-button">Support More Transformative Content ✨</a>
             </div>
         </div>
 
-        <div id="giving" class="tab-content">
+        <div id="giving" class="tab-content" style="padding:0; background: transparent; box-shadow:none;">
             <div class="giving-section">
-                <h2>Partner with Us: Support Global Truth Ministries</h2>
-                <p>Your generous giving empowers us to continue our vital work of spreading spiritual understanding and supporting communities. Every contribution, big or small, makes a profound difference and is deeply appreciated.</p>
-                <p><strong>"For it is in giving that we receive."</strong> - Inspired by St. Francis</p>
+                <h2>Partner in Faith: Support Global Truth Ministries 💖</h2>
+                <p>Your faithful and generous giving is the cornerstone that empowers us to continue our vital ministry of spreading spiritual understanding, fostering unity, and supporting communities in need. Every contribution, whether large or small, makes a profound and lasting difference. It is received with deep gratitude and prayer.</p>
+                <p><strong>"For it is in giving that we receive; it is in pardoning that we are pardoned; and it is in dying that we are born to eternal life."</strong> - Inspired by St. Francis of Assisi</p>
 
                 <div class="donation-options">
-                    <button class="donation-button" onclick="alert('Thank you for your intended gift of $50! This is a demo site; no payment will be processed.')">$50</button>
-                    <button class="donation-button" onclick="alert('Thank you for your intended gift of $100! This is a demo site; no payment will be processed.')">$100</button>
-                    <button class="donation-button" onclick="alert('Thank you for your intended gift of $250! This is a demo site; no payment will be processed.')">$250</button>
-                    <button class="donation-button" onclick="alert('Thank you for your intended gift of $500! This is a demo site; no payment will be processed.')">$500 (Ministry Builder)</button>
+                    <button class="donation-button" onclick="alert('Thank you for your intended gift of $50! This is a demo site; no payment will be processed.')">$50 <span style="font-size:0.8em; display:block; opacity:0.7;">Seed Planter</span></button>
+                    <button class="donation-button" onclick="alert('Thank you for your intended gift of $100! This is a demo site; no payment will be processed.')">$100 <span style="font-size:0.8em; display:block; opacity:0.7;">Hope Giver</span></button>
+                    <button class="donation-button" onclick="alert('Thank you for your intended gift of $250! This is a demo site; no payment will be processed.')">$250 <span style="font-size:0.8em; display:block; opacity:0.7;">Wisdom Sharer</span></button>
+                    <button class="donation-button" onclick="alert('Thank you for your intended gift of $500! This is a demo site; no payment will be processed.')">$500 <span style="font-size:0.8em; display:block; opacity:0.7;">Ministry Builder</span></button>
                 </div>
                 <div class="custom-amount">
                     <input type="number" placeholder="Or Enter Custom Amount">
-                    <button class="donation-button" style="background-color: #28a745;" onclick="alert('Thank you for your intended custom gift! This is a demo site; no payment will be processed.')">Give Custom Amount</button>
+                    <button class="donation-button" onclick="alert('Thank you for your intended custom gift! This is a demo site; no payment will be processed.')">Give My Best Gift 🎁</button>
                 </div>
-                <p style="margin-top: 30px; font-size: 0.9em;"><em>Note: This is for illustrative purposes only. No actual donations are processed.</em></p>
-                <p style="margin-top: 20px;">You can also learn about other ways to give, such as planned giving or volunteering, by contacting our ministry office (details would be here).</p>
+                <p style="margin-top: 35px; font-size: 0.95em;"><em>Global Truth Ministries is a conceptual demonstration. No actual donations are processed. All giving options are for illustrative purposes only.</em></p>
+                <p style="margin-top: 25px;">Interested in other ways to partner, such as planned giving or volunteering your talents? We'd love to hear from you! (Contact details would be here).</p>
             </div>
         </div>
 
     </div>
 
     <footer>
-        <p>© <span id="year"></span> Global Truth Ministries. All Rights Reserved.</p>
-        <p>A Ministry Dedicated to Spiritual Education and Global Outreach.</p>
-        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#contact-placeholder">Contact Us (Placeholder)</a></p>
-        <p><em>This website is a conceptual demonstration. No actual ministry or services are offered.</em></p>
+        <div class="footer-logo-placeholder">Global Truth Ministries</div>
+        <p>© <span id="year"></span> Global Truth Ministries. All Rights Reserved. </p>
+        <p>A Ministry Devoted to Spiritual Enlightenment, Interfaith Dialogue, and Global Compassion.</p>
+        <p>
+            <a href="#privacy-placeholder">Privacy Policy</a> | 
+            <a href="#terms-placeholder">Terms of Use</a> | 
+            <a href="#contact-placeholder">Contact Us (Ministry Office)</a>
+        </p>
+        <p style="font-size:0.8em; opacity: 0.7; margin-top:20px;"><em>This website is a conceptual design for illustrative purposes and does not represent a real organization or solicit actual donations.</em></p>
     </footer>
 
     <script>
@@ -368,7 +527,7 @@
                 tabcontent[i].style.display = "none";
                 tabcontent[i].classList.remove("active");
             }
-            tabbuttons = document.querySelectorAll("nav .nav-button, nav .give-button");
+            tabbuttons = document.querySelectorAll("nav .nav-button, nav .give-button-nav"); // Updated selector
             for (i = 0; i < tabbuttons.length; i++) {
                 tabbuttons[i].classList.remove("active");
             }
@@ -376,31 +535,41 @@
             var targetTab = document.getElementById(tabName);
             if (targetTab) {
                 targetTab.style.display = "block";
-                targetTab.classList.add("active");
+                // Delay adding active class for animation
+                setTimeout(() => targetTab.classList.add("active"), 10); 
             }
             
             if (evt && evt.currentTarget) {
                  evt.currentTarget.classList.add("active");
             } else if (isGiveTab) {
-                // If triggered by non-event (e.g. header button) and it's the give tab
-                document.querySelector('nav .give-button').classList.add('active');
+                const giveNavButton = document.querySelector('nav .give-button-nav');
+                if (giveNavButton) giveNavButton.classList.add('active');
             }
 
 
-            // Scroll to the giving section if the 'giving' tab is opened from a link
             if (tabName === 'giving' && isGiveTab) {
-                 setTimeout(() => { // Timeout to ensure tab is visible before scroll
-                    targetTab.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                 setTimeout(() => { 
+                    targetTab.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Center view for giving
                 }, 100);
             } else if (targetTab) {
-                 window.scrollTo({ top: targetTab.offsetTop - 100, behavior: 'smooth' }); // Adjust offset for sticky nav
+                 // Smooth scroll to top of tab content, considering sticky nav height
+                 const navHeight = document.querySelector('nav').offsetHeight || 70;
+                 const elementPosition = targetTab.getBoundingClientRect().top + window.pageYOffset;
+                 const offsetPosition = elementPosition - navHeight - 20; // Extra 20px padding
+
+                 window.scrollTo({
+                     top: offsetPosition,
+                     behavior: "smooth"
+                 });
             }
         }
 
         document.addEventListener('DOMContentLoaded', (event) => {
             const firstNavButton = document.querySelector('nav .nav-button');
             if (firstNavButton) {
-                firstNavButton.click();
+                // Manually trigger openTab for the first button, without event object
+                openTab(null, firstNavButton.getAttribute('onclick').match(/'([^']+)'/)[1]);
+                firstNavButton.classList.add('active');
             }
         });
     </script>
