@@ -3,626 +3,716 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synergy Spiritual Solutions Group - Innovating Faith.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Synergy Spiritual Solutions Group - NextGen Faith Platforms</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Exo+2:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --corp-primary: #004A99; /* Deep Corporate Blue */
-            --corp-secondary: #F0F4F8; /* Light Grey Background */
-            --corp-accent: #4CAF50; /* Success Green for CTAs */
-            --corp-text: #333333;
+            --corp-primary: #0033A0; /* A stronger, more confident blue */
+            --corp-secondary: #EAEFF3; /* A cooler, tech-like light grey */
+            --corp-accent-primary: #00A9E0; /* Bright, energetic cyan for primary actions */
+            --corp-accent-secondary: #FFB81C; /* Gold/Yellow for highlights, warnings, or premium features */
+            --corp-success: #34A853; 
+            --corp-text: #212529;
             --corp-text-light: #FFFFFF;
-            --corp-border: #D1D9E0;
-            --corp-hover-blue: #003B7A;
-            --corp-hover-green: #3E8E41;
-            --font-main: 'Roboto', sans-serif;
-            --font-headings: 'Montserrat', sans-serif;
-            --border-radius-corp: 4px; /* Subtle rounding */
-            --transition-corp: 0.3s ease-out;
-            --box-shadow-corp: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --corp-text-muted: #6C757D;
+            --corp-border: #CED4DA;
+            --font-main: 'Inter', sans-serif;
+            --font-display: 'Exo 2', sans-serif; /* Techy, modern display font */
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --transition-fast: 0.2s ease-out;
+            --transition-med: 0.4s ease-out;
+            --box-shadow-light: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --box-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        /* Corporate Preloader */
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+          }
+        }
+
+        /* Animated Preloader - "System Boot" */
         #preloader {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 99999;
-            background: #fff; /* Solid white background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
+            position: fixed; left: 0; top: 0; width: 100%; height: 100%;
+            z-index: 99999; background: #00102A; /* Darker boot screen */
+            display: flex; justify-content: center; align-items: center;
+            flex-direction: column; color: var(--corp-accent-primary);
+            font-family: var(--font-display);
+            transition: opacity 0.5s 0.5s ease-out, visibility 0.5s 0.5s ease-out; /* Delay hiding */
         }
-        #preloader.loaded {
-            opacity: 0;
-            visibility: hidden;
-        }
-        .progress-bar-container {
-            width: 250px;
-            height: 20px;
-            background-color: var(--corp-border);
-            border-radius: var(--border-radius-corp);
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background-color: var(--corp-primary);
-            animation: loadProgress 2s ease-out forwards; /* Simulates loading */
-        }
-        #preloader p {
-            font-family: var(--font-headings);
-            color: var(--corp-primary);
-            font-size: 1em;
-            letter-spacing: 0.5px;
-        }
-        @keyframes loadProgress {
-            0% { width: 0%; }
-            20% { width: 15%; } /* Uneven progress for realism */
-            50% { width: 55%; }
-            80% { width: 75%; }
-            100% { width: 100%; }
-        }
+        #preloader.loaded { opacity: 0; visibility: hidden; }
+        .boot-sequence { width: 300px; text-align: left; font-size: 0.9em; }
+        .boot-sequence div { margin-bottom: 8px; opacity: 0; animation: bootText 0.5s forwards; }
+        .boot-sequence div:nth-child(1) { animation-delay: 0.2s; }
+        .boot-sequence div:nth-child(2) { animation-delay: 0.7s; }
+        .boot-sequence div:nth-child(3) { animation-delay: 1.2s; }
+        .boot-sequence div:nth-child(4) { animation-delay: 1.7s; color: var(--corp-success); }
+        .boot-sequence div.loader-bar { height: 5px; background: var(--corp-accent-primary); width: 0; margin-top:15px; animation: bootBar 1s 1.7s forwards; }
+        @keyframes bootText { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes bootBar { from { width: 0; } to { width: 100%; } }
 
         body {
-            font-family: var(--font-main);
-            margin: 0;
-            padding: 0;
-            background-color: var(--corp-secondary);
-            color: var(--corp-text);
-            line-height: 1.6;
-            font-size: 16px;
-            overflow-x: hidden;
+            font-family: var(--font-main); margin: 0; padding: 0;
+            background-color: var(--corp-secondary); color: var(--corp-text);
+            line-height: 1.65; font-size: 16px; overflow-x: hidden;
         }
-
-        .container {
-            width: 90%;
-            max-width: 1280px; /* Standard corporate width */
-            margin: auto;
-            padding: 0 20px;
+        /* Subtle animated background pattern */
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image:
+                linear-gradient(45deg, rgba(0,51,160,0.03) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0,51,160,0.03) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(0,51,160,0.03) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(0,51,160,0.03) 75%);
+            background-size: 60px 60px;
+            animation: bgPatternScroll 60s linear infinite;
+            z-index: -1; opacity: 0.7;
         }
+        @keyframes bgPatternScroll { from { background-position: 0 0; } to { background-position: 240px 120px; } }
 
-        /* Header - Corporate Banner */
+
+        .container { width: 92%; max-width: 1320px; margin: auto; padding: 0 15px; }
+
+        /* Header - Dynamic & Professional */
         header {
-            background: var(--corp-primary);
-            color: var(--corp-text-light);
-            padding: 40px 0; /* More concise header */
-            border-bottom: 5px solid var(--corp-accent);
+            background: linear-gradient(135deg, var(--corp-primary) 0%, #002266 100%);
+            color: var(--corp-text-light); padding: 25px 0;
+            border-bottom: 4px solid var(--corp-accent-primary);
+            position: relative; overflow: hidden;
         }
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Animated background elements in header */
+        header::after {
+            content: ''; position: absolute; bottom: -50px; left: 20%; width: 150px; height: 150px;
+            background: radial-gradient(circle, rgba(0,169,224,0.1) 0%, rgba(0,169,224,0) 70%);
+            border-radius: 50%; animation: pulse 5s infinite ease-in-out;
         }
+        @keyframes pulse { 0%, 100% { transform: scale(0.9); opacity: 0.7; } 50% { transform: scale(1.1); opacity: 1; } }
+
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-area { display: flex; align-items: center; }
+        .logo-animated { /* CSS Animated Logo */
+            width: 50px; height: 50px; margin-right: 15px;
+            border: 3px solid var(--corp-accent-primary); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-family: var(--font-display); font-size: 1.4em; font-weight: 800;
+            color: var(--corp-accent-primary); animation: spinLogo 10s linear infinite;
+            box-shadow: 0 0 15px rgba(0,169,224,0.5);
+        }
+        @keyframes spinLogo { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .logo-area h1 {
-            font-family: var(--font-headings);
-            font-size: 2.5em; /* Professional size */
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: -1px; /* Tighter spacing */
+            font-family: var(--font-display); font-size: 2.2em; font-weight: 700;
+            margin: 0; letter-spacing: -0.5px;
         }
-        .logo-area .slogan {
-            font-size: 0.9em;
-            opacity: 0.8;
-            margin-top: 5px;
-        }
-        .header-contact-info { /* Placeholder for contact/login */
-            font-size: 0.9em;
-            text-align: right;
-        }
-        .header-contact-info a {
-            color: var(--corp-text-light);
-            text-decoration: none;
-            margin-left: 15px;
-        }
-        .header-contact-info a:hover {
-            text-decoration: underline;
-        }
+        .logo-area .slogan { font-size: 0.85em; opacity: 0.85; margin-top: 2px; }
 
-        /* Navigation - Professional Toolbar */
+        .header-utilities { text-align: right; }
+        .market-ticker { font-size: 0.8em; margin-bottom: 5px; opacity: 0.9; }
+        .market-ticker span { display: inline-block; animation: fadeCycle 8s infinite; }
+        .market-ticker .positive { color: var(--corp-success); }
+        .market-ticker .negative { color: #E91E63; } /* Example */
+        @keyframes fadeCycle {
+          0%, 100% { opacity: 1; } 40% { opacity: 1; }
+          50% { opacity: 0; } 90% { opacity: 0; }
+        }
+        .header-utilities a { color: var(--corp-text-light); text-decoration: none; margin-left: 15px; font-size: 0.9em; transition: color var(--transition-fast); }
+        .header-utilities a:hover { color: var(--corp-accent-primary); }
+
+        /* Navigation - Advanced with Dropdowns */
         nav {
-            background: #fff;
-            padding: 0.8rem 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-bottom: 1px solid var(--corp-border);
+            background: #fff; text-align: center; position: sticky; top: 0; z-index: 1000;
+            box-shadow: var(--box-shadow-medium);
         }
-        nav .nav-button, nav .invest-button-nav {
-            font-family: var(--font-headings);
-            background: transparent;
-            color: var(--corp-primary);
-            border: none;
-            padding: 12px 20px;
-            margin: 0 3px;
-            cursor: pointer;
-            border-radius: var(--border-radius-corp);
-            font-size: 1em; /* Standard nav size */
-            transition: var(--transition-corp);
-            text-transform: uppercase;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+        nav ul { margin: 0; padding: 0; list-style: none; display: flex; justify-content: center; }
+        nav ul li { position: relative; }
+        nav ul li a, nav ul li .nav-button-style { /* Common styling for links and button-like items */
+            font-family: var(--font-display); display: block; color: var(--corp-primary);
+            text-decoration: none; padding: 18px 25px; font-size: 0.95em;
+            text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+            position: relative;
         }
-        nav .nav-button:hover, nav .nav-button.active {
-            background: var(--corp-secondary);
-            color: var(--corp-hover-blue);
+        nav ul li a::after, nav ul li .nav-button-style::after { /* Underline hover effect */
+            content: ''; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+            width: 0; height: 3px; background-color: var(--corp-accent-primary);
+            transition: width var(--transition-med);
         }
-        nav .invest-button-nav {
-            background-color: var(--corp-accent);
-            color: var(--corp-text-light);
+        nav ul li:hover a::after, nav ul li a.active::after, nav ul li .nav-button-style:hover::after, nav ul li .nav-button-style.active::after { width: 60%; }
+        nav ul li:hover > a, nav ul li a.active, nav ul li:hover > .nav-button-style, nav ul li .nav-button-style.active {
+            background-color: var(--corp-secondary); color: var(--corp-accent-primary);
         }
-        nav .invest-button-nav:hover {
-            background-color: var(--corp-hover-green);
+        /* Dropdown Menu Styling */
+        nav ul ul { /* Submenu */
+            display: none; position: absolute; top: 100%; left: 0;
+            background: #fff; box-shadow: var(--box-shadow-medium);
+            min-width: 250px; text-align: left; z-index: 1001;
         }
+        nav ul li:hover > ul { display: block; animation: slideDown 0.3s ease-out; }
+        @keyframes slideDown { from { opacity:0; transform: translateY(-10px); } to { opacity:1; transform: translateY(0); } }
+        nav ul ul li { width: 100%; }
+        nav ul ul li a { padding: 15px 20px; font-size: 0.9em; text-transform: none; font-weight:500; }
+        nav ul ul li a::after { bottom: 5px; height: 2px; } /* Adjust underline for submenu */
 
-        /* Tab Content - Clean Sections */
+        .invest-button-nav-item a { /* The main "Investor Relations" button */
+            background-color: var(--corp-accent-primary); color: var(--corp-text-light) !important;
+        }
+        .invest-button-nav-item:hover a { background-color: #008fbf !important; }
+        .invest-button-nav-item a::after { background-color: var(--corp-accent-secondary) !important; }
+
+        /* Tab Content General */
         .tab-content {
-            display: none;
-            padding: 40px 20px;
-            background: #fff;
-            margin-top: 30px;
-            border-radius: var(--border-radius-corp);
+            display: none; padding: 40px 25px; background: #fff; margin-top: 30px;
+            border-radius: var(--border-radius-md); box-shadow: var(--box-shadow-medium);
             border: 1px solid var(--corp-border);
-            box-shadow: var(--box-shadow-corp);
         }
-        .tab-content.active {
-            display: block;
-            animation: fadeInCorp 0.5s ease-out forwards;
-        }
-        @keyframes fadeInCorp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .tab-content.active { display: block; animation: contentFadeIn 0.6s ease-out; }
+        @keyframes contentFadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
         .tab-content h2 {
-            font-family: var(--font-headings);
-            font-size: 2.2em;
-            color: var(--corp-primary);
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--corp-accent);
-            text-align: left; /* Corporate standard */
-            font-weight: 700;
+            font-family: var(--font-display); font-size: 2.4em; color: var(--corp-primary);
+            margin: 0 0 30px 0; padding-bottom: 20px; text-align: left; font-weight: 700;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(to right, var(--corp-accent-primary), var(--corp-primary) 70%) 1;
         }
         .tab-content h3 {
-             font-family: var(--font-headings);
-             font-size: 1.6em;
-             color: var(--corp-hover-blue);
-             margin-top: 30px;
-             margin-bottom: 15px;
-             font-weight: 500;
-        }
-        .tab-content p {
-            margin-bottom: 1.2em;
-            font-size: 1.05em; /* Slightly larger for readability */
-        }
-        .tab-content ul {
-            list-style: disc;
-            margin-left: 20px;
-            margin-bottom: 1.2em;
-        }
-        .tab-content ul li {
-            margin-bottom: 0.5em;
+             font-family: var(--font-display); font-size: 1.8em; color: #002266; /* Darker subhead */
+             margin: 35px 0 20px 0; font-weight: 700;
         }
 
-        /* "Foundational Directives" - Passage Styling */
-        .directives-section { /* Renamed from comparison-section */
-            margin-bottom: 40px;
+        /* --- Dashboard Specifics --- */
+        #homeDashboard .kpi-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 30px;
         }
-        .passage-container { /* Re-using, maybe rename to .directive-container */
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+        .kpi-widget {
+            background: var(--corp-secondary); padding: 20px; border-radius: var(--border-radius-md);
+            border: 1px solid var(--corp-border); transition: var(--transition-med);
+            box-shadow: var(--box-shadow-light); position: relative; overflow: hidden;
         }
-        .passage { /* Now "Directive Unit" */
-            background: var(--corp-secondary);
-            padding: 20px;
-            border-radius: var(--border-radius-corp);
-            border: 1px solid var(--corp-border);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: var(--transition-corp);
+        .kpi-widget:hover { transform: translateY(-5px); box-shadow: var(--box-shadow-medium); border-left: 5px solid var(--corp-accent-primary); }
+        .kpi-widget h4 { font-family:var(--font-display); margin:0 0 10px 0; color:var(--corp-primary); font-size:1.1em;}
+        .kpi-widget .value { font-size: 2.2em; font-weight: 700; color: var(--corp-primary); }
+        .kpi-widget .trend { font-size: 0.9em; margin-left: 10px; }
+        .kpi-widget .trend.positive { color: var(--corp-success); } .kpi-widget .trend.negative { color: #D32F2F; }
+        .kpi-widget .icon-placeholder { /* CSS Animated Icon */
+            position: absolute; top: 15px; right: 15px; width: 40px; height: 40px;
+            border-radius: 50%; background: rgba(0,169,224,0.1); display: flex;
+            align-items: center; justify-content: center; color: var(--corp-accent-primary);
+            font-size: 1.5em; animation: iconPulse 2s infinite ease-in-out;
         }
-        .passage:hover {
-            border-color: var(--corp-primary);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-        }
-        .passage h4 { /* "Directive Title" */
-            font-family: var(--font-headings);
-            margin-top: 0;
-            color: var(--corp-primary);
-            font-size: 1.3em;
-            margin-bottom: 12px;
-            border-bottom: 1px solid var(--corp-border);
-            padding-bottom: 8px;
-            font-weight: 500;
-        }
-        .passage p { /* Directive text */
-            font-family: var(--font-main);
-            font-size: 1em;
-            color: var(--corp-text);
-        }
-        .passage-source { /* "Reference Code" */
-            font-family: var(--font-main);
-            font-style: normal;
-            font-size: 0.85em;
-            color: #777;
-            text-align: right;
-            margin-top: 15px;
-            display: block;
-        }
+        @keyframes iconPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 
-        /* "Investment Tiers" (Giving) Section */
-        .investment-section { /* Renamed */
-            background: linear-gradient(to right, var(--corp-primary) , var(--corp-hover-blue));
-            color: var(--corp-text-light);
-            padding: 30px;
-            border-radius: var(--border-radius-corp);
-            text-align: center;
-            margin-top: 30px;
-        }
-        .investment-section h2 {
-            color: var(--corp-text-light);
-            border-bottom-color: var(--corp-accent);
-            font-size: 2em;
-        }
-        .investment-section p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-        .investment-options { /* Renamed */
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .investment-button { /* Renamed */
-            background-color: var(--corp-accent);
-            color: var(--corp-text-light);
-            font-family: var(--font-headings);
-            font-weight: 500;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.05em;
-            border-radius: var(--border-radius-corp);
-            cursor: pointer;
-            transition: var(--transition-corp);
-        }
-        .investment-button:hover {
-            background-color: var(--corp-hover-green);
-            transform: translateY(-2px);
-        }
-        .custom-investment input { /* Renamed */
-            padding: 12px 15px;
-            font-size: 1em;
-            border: 1px solid var(--corp-border);
-            border-radius: var(--border-radius-corp);
-            margin-right: 10px;
-            width: 180px;
-        }
+        .css-chart-container { background:var(--corp-secondary); padding:20px; border-radius:var(--border-radius-md); margin-top:30px; }
+        .css-chart { display: flex; justify-content: space-around; align-items: flex-end; height: 200px; border-bottom: 2px solid var(--corp-border); }
+        .css-chart .bar { width: 12%; background-color: var(--corp-accent-primary); border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0; position: relative; animation: growBar 1s ease-out forwards; transform-origin: bottom; }
+        .css-chart .bar span { position:absolute; bottom:-25px; left:50%; transform:translateX(-50%); font-size:0.8em; color:var(--corp-text-muted); }
+        @keyframes growBar { from { height: 0%; } } /* Height set via inline style */
 
-        /* General Call to Action Button Styling - Corporate Standard */
-        .cta-button-corp {
-            display: inline-block;
-            background-color: var(--corp-accent);
-            color: var(--corp-text-light);
-            padding: 12px 25px;
-            font-size: 1.05em;
-            font-weight: 500;
-            font-family: var(--font-headings);
-            border-radius: var(--border-radius-corp);
-            text-decoration: none;
-            margin-top: 15px;
-            transition: var(--transition-corp);
+        /* --- Our Solutions Specifics --- */
+        .solution-card {
+            background: #fff; border-radius: var(--border-radius-md); box-shadow: var(--box-shadow-medium);
+            margin-bottom: 30px; display: flex; overflow: hidden; transition: transform var(--transition-med);
         }
-        .cta-button-corp:hover {
-            background-color: var(--corp-hover-green);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        .solution-card:hover { transform: scale(1.02); }
+        .solution-card .visual-placeholder { /* CSS animated visual */
+            flex-basis: 200px; background: linear-gradient(45deg, var(--corp-accent-primary), var(--corp-primary));
+            display: flex; align-items: center; justify-content: center; color: #fff; font-size: 3em;
+            animation: flowGradient 5s ease infinite alternate; background-size: 200% 200%;
         }
+        @keyframes flowGradient { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+        .solution-card .content { padding: 25px; flex-grow: 1; }
+        .solution-card h4 { font-family:var(--font-display); margin:0 0 10px 0; font-size:1.5em; color: var(--corp-primary); }
+        .solution-card p { margin-bottom: 15px; font-size:0.95em; }
+        .solution-card .cta-button-small {
+             background:var(--corp-accent-secondary); color:#333; padding:8px 15px; font-size:0.9em;
+             border-radius:var(--border-radius-sm); text-decoration:none; display:inline-block;
+             font-weight:700; transition: background-color var(--transition-fast);
+        }
+        .solution-card .cta-button-small:hover { background-color: #e0a800; }
 
-        /* "Stakeholder Endorsements" (Testimonials) */
-        .endorsement-card {
-            background: #fff;
-            padding: 20px;
-            border-radius: var(--border-radius-corp);
-            margin-bottom: 20px;
-            border: 1px solid var(--corp-border);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        /* Accordion for Directives */
+        .directive-unit { border: 1px solid var(--corp-border); border-radius: var(--border-radius-sm); margin-bottom:15px; }
+        .directive-header {
+            background: var(--corp-secondary); padding: 12px 15px; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: background-color var(--transition-fast);
         }
-        .endorsement-card p.quote {
-            font-style: italic;
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            color: #555;
-            padding-left: 20px;
-            border-left: 3px solid var(--corp-accent);
+        .directive-header:hover { background-color: #dde4eb; }
+        .directive-header h4 { margin:0; font-family:var(--font-headings); font-size:1.2em; color:var(--corp-primary); }
+        .directive-header .toggle-icon { font-weight:bold; transition: transform var(--transition-med); }
+        .directive-content {
+            padding: 0 15px; max-height: 0; overflow: hidden;
+            transition: max-height var(--transition-med), padding var(--transition-med);
         }
-        .endorsement-card p.attribution {
-            text-align: right;
-            font-weight: 700; /* Bolder attribution */
-            color: var(--corp-primary);
-            font-size: 1em;
-        }
-        .endorsement-card p.attribution span {
-            font-weight: 400;
-            font-size: 0.9em;
-            color: #777;
-        }
+        .directive-content p { font-size:0.95em; margin: 15px 0; }
+        .directive-unit input[type="checkbox"] { display: none; } /* Hide checkbox */
+        .directive-unit input[type="checkbox"]:checked ~ .directive-content { max-height: 500px; padding: 15px; } /* Adjust max-height as needed */
+        .directive-unit input[type="checkbox"]:checked ~ .directive-header .toggle-icon { transform: rotate(45deg); }
 
 
-        /* Footer - Standard Corporate Footer */
+        /* --- Thought Leadership: Publication Cards --- */
+        .publication-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:25px; }
+        .publication-card {
+            background:#fff; border:1px solid var(--corp-border); border-radius:var(--border-radius-md);
+            box-shadow:var(--box-shadow-light); overflow:hidden; transition: box-shadow var(--transition-med);
+        }
+        .publication-card:hover { box-shadow: var(--box-shadow-medium); }
+        .publication-card .cover-art { /* CSS animated placeholder */
+            height: 180px; background: linear-gradient(-45deg, #001f3f, #0074D9, #7FDBFF, #39CCCC);
+            background-size: 400% 400%; animation: abstractArt 10s ease infinite;
+            display:flex; align-items:center; justify-content:center; color:#fff; font-family:var(--font-display);
+            font-size:1.5em; text-align:center; padding:10px;
+        }
+        @keyframes abstractArt {
+            0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
+        }
+        .publication-card .info { padding:20px; }
+        .publication-card h4 { font-family:var(--font-display); font-size:1.3em; margin:0 0 10px 0; color:var(--corp-primary); }
+        .publication-card p { font-size:0.9em; margin-bottom:15px; }
+        /* CSS Modal for Webinar Registration */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); display: none; /* Hidden by default */
+            align-items: center; justify-content: center; z-index: 2000;
+            opacity: 0; transition: opacity var(--transition-med);
+        }
+        .modal-overlay:target { display: flex; opacity: 1; } /* Show when targeted */
+        .modal-content {
+            background: #fff; padding: 30px; border-radius: var(--border-radius-md);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3); width: 90%; max-width: 500px;
+            position:relative; transform: scale(0.9); transition: transform var(--transition-med);
+        }
+        .modal-overlay:target .modal-content { transform: scale(1); }
+        .modal-content h3 { margin-top:0; font-family:var(--font-display); color:var(--corp-primary); }
+        .modal-content .close-modal {
+            position: absolute; top: 15px; right: 15px; text-decoration: none;
+            font-size: 1.5em; color: var(--corp-text-muted);
+        }
+        .fake-form label { display:block; margin-bottom:5px; font-weight:500; }
+        .fake-form input[type="text"], .fake-form input[type="email"] {
+            width:calc(100% - 22px); padding:10px; margin-bottom:15px; border:1px solid var(--corp-border);
+            border-radius:var(--border-radius-sm);
+        }
+
+        /* --- Investor Relations: Investment Tier Cards --- */
+        .investment-tier-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:25px; }
+        .investment-tier-card {
+            background:#fff; border:1px solid var(--corp-border); border-radius:var(--border-radius-md);
+            padding:25px; text-align:center; box-shadow:var(--box-shadow-light);
+            transition: transform var(--transition-med), box-shadow var(--transition-med);
+        }
+        .investment-tier-card:hover { transform: translateY(-8px); box-shadow: var(--box-shadow-medium); }
+        .investment-tier-card.premium { border-top: 5px solid var(--corp-accent-secondary); } /* Highlight premium */
+        .investment-tier-card h4 { font-family:var(--font-display); font-size:1.6em; margin:0 0 10px 0; color:var(--corp-primary); }
+        .investment-tier-card .price { font-size:2em; font-weight:700; color:var(--corp-primary); margin-bottom:15px; }
+        .investment-tier-card .price span { font-size:0.5em; font-weight:400; color:var(--corp-text-muted); }
+        .investment-tier-card ul { list-style:none; padding:0; margin:0 0 20px 0; font-size:0.9em; }
+        .investment-tier-card ul li { margin-bottom:8px; padding-left:20px; position:relative; }
+        .investment-tier-card ul li::before { /* Checkmark icon */
+            content: '✓'; color:var(--corp-success); position:absolute; left:0; font-weight:bold;
+        }
+        .roi-calculator { margin-top:30px; background:var(--corp-secondary); padding:20px; border-radius:var(--border-radius-md); }
+        .roi-calculator label, .roi-calculator input, .roi-calculator button { display:block; margin-bottom:10px; width:100%; }
+        .roi-calculator input { padding:10px; border:1px solid var(--corp-border); border-radius:var(--border-radius-sm); }
+        .roi-calculator #calculatedROI { font-weight:bold; color:var(--corp-primary); font-size:1.2em; margin-top:10px; }
+
+
+        /* Footer */
         footer {
-            text-align: center;
-            padding: 30px 20px;
-            background: var(--corp-hover-blue); /* Darker blue */
-            color: rgba(255,255,255,0.7);
-            margin-top: 40px;
-            font-size: 0.9em;
+            text-align: center; padding: 40px 20px;
+            background: #001833; /* Darker corporate footer */
+            color: rgba(255,255,255,0.7); margin-top: 50px; font-size: 0.9em;
         }
-        footer p {
-            margin: 5px 0;
+        footer .footer-nav { margin-bottom:15px; }
+        footer .footer-nav a { color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 10px; transition: color var(--transition-fast); }
+        footer .footer-nav a:hover { color: var(--corp-accent-primary); }
+        footer .footer-logo-placeholder { font-family:var(--font-display); font-size:1.6em; color:#fff; opacity:0.9; margin-bottom:10px; font-weight:700; }
+
+        /* General CTA Button */
+        .cta-button-main {
+            display: inline-block; background-color: var(--corp-accent-primary); color: var(--corp-text-light);
+            padding: 12px 28px; font-size: 1.05em; font-weight: 700; font-family: var(--font-display);
+            border-radius: var(--border-radius-sm); text-decoration: none; margin-top: 15px;
+            transition: background-color var(--transition-fast), transform var(--transition-fast);
+            letter-spacing: 0.5px;
         }
-        footer a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            margin: 0 8px;
-        }
-        footer a:hover {
-            text-decoration: underline;
-            color: #fff;
-        }
-        .footer-logo-placeholder {
-            font-family: var(--font-headings);
-            font-size: 1.5em;
-            color: #fff;
-            opacity: 0.9;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
+        .cta-button-main:hover { background-color: #008fbf; transform: translateY(-2px); }
+
+
     </style>
 </head>
 <body>
     <div id="preloader">
-        <div class="progress-bar-container">
-            <div class="progress-bar"></div>
+        <div class="boot-sequence">
+            <div>[SSSG] Powering On Self-Actualization Matrix...</div>
+            <div>[SSSG] Calibrating Devotional Output Sensors...</div>
+            <div>[SSSG] Synchronizing with Celestial Cloud Servers...</div>
+            <div class="loader-bar"></div>
+            <div>[SSSG] System Online. Welcome, Valued Partner.</div>
         </div>
-        <p>INITIALIZING SPIRITUAL SYNERGY...</p>
     </div>
 
     <header>
         <div class="container">
             <div class="logo-area">
-                <h1>Synergy Spiritual Solutions Group</h1>
-                <p class="slogan">Innovating Faith. Delivering Divinity. Maximizing Your Spiritual ROI.</p>
+                <div class="logo-animated">S</div>
+                <div>
+                    <h1>Synergy Spiritual Solutions Group</h1>
+                    <p class="slogan">NextGen Faith Platforms. Maximizing Spiritual ROI.</p>
+                </div>
             </div>
-            <div class="header-contact-info">
-                <span>Client Portal | <a href="#">Support</a> | <a href="#">Login</a></span>
+            <div class="header-utilities">
+                <div class="market-ticker">
+                    Spiritual Stock Index (SSI): <span class="positive">+3.14% ▲</span>
+                    <span>Faith Futures (FFX): <span class="negative">-0.50% ▼</span></span>
+                </div>
+                <a href="#">Client Login</a> | <a href="#">Support Portal</a>
             </div>
         </div>
     </header>
 
     <nav>
-        <button class="nav-button" onclick="openTab(event, 'homeDashboard')">Dashboard</button>
-        <button class="nav-button" onclick="openTab(event, 'ourSolutions')">Our Solutions</button>
-        <button class="nav-button" onclick="openTab(event, 'thoughtLeadership')">Thought Leadership</button>
-        <button class="nav-button" onclick="openTab(event, 'impactMetrics')">Impact Metrics</button>
-        <button class="invest-button-nav" onclick="openTab(event, 'investorRelations', true)">Investor Relations</button>
+        <ul>
+            <li><a href="#" class="nav-button-style active" onclick="openTab(event, 'homeDashboard')">Executive Dashboard</a></li>
+            <li>
+                <a href="#" class="nav-button-style" onclick="openTab(event, 'ourSolutions')">Our Solutions ▾</a>
+                <ul>
+                    <li><a href="#solution-personal" onclick="scrollToElement('solution-personal')">Personalized Piety Plans</a></li>
+                    <li><a href="#solution-congregational" onclick="scrollToElement('solution-congregational')">Congregational Cohesion Catalysts</a></li>
+                    <li><a href="#solution-global" onclick="scrollToElement('solution-global')">Global Outreach Technologies</a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="nav-button-style" onclick="openTab(event, 'thoughtLeadership')">Thought Leadership Hub</a></li>
+            <li><a href="#" class="nav-button-style" onclick="openTab(event, 'impactMetrics')">Quantifiable Impact</a></li>
+            <li class="invest-button-nav-item"><a href="#" onclick="openTab(event, 'investorRelations', true)">Investor Relations</a></li>
+        </ul>
     </nav>
 
     <div class="container">
-        <div id="homeDashboard" class="tab-content">
-            <h2>Welcome to Your Spiritual Growth Portal, Valued Stakeholder!</h2>
-            <p>Synergy Spiritual Solutions Group (SSSG) is the market leader in faith-based innovation and divine deliverance. We empower individuals and organizations to achieve peak spiritual performance by leveraging cutting-edge devotional technologies and biblically-sound, synergized strategies.</p>
-            <p>Our holistic suite of spiritual solutions is designed to optimize your faith journey, enhance your blessed assurance index, and deliver tangible returns on illumination (ROI). Explore our offerings and discover how SSSG can help you unlock unprecedented levels of spiritual capital.</p>
-            <img src="https://via.placeholder.com/1200x300.png?text=SSSG+Q3+Blessing+Growth+Chart+(Upwards+Trend)" alt="Placeholder chart showing growth" style="width:100%; max-width:700px; margin:20px auto; display:block; border-radius:var(--border-radius-corp); border:1px solid var(--corp-border);">
-            <p>We are committed to a Q4 target of +15% aggregate stakeholder joy. Your active participation and investment are key performance indicators for mutual success.</p>
-            <div style="text-align:center; margin-top:30px;">
-                <a href="#investorRelations" onclick="openTab(event, 'investorRelations', true)" class="cta-button-corp">Explore Investment Tiers</a>
+        <!-- Dashboard Tab -->
+        <div id="homeDashboard" class="tab-content active">
+            <h2>Executive Dashboard: Q4 Spiritual Synergy Overview</h2>
+            <p>Welcome, Valued Partner, to your centralized hub for monitoring key spiritual performance indicators (KSPIs) and strategic faith initiatives. SSSG is committed to data-driven divinity.</p>
+            <div class="kpi-grid">
+                <div class="kpi-widget">
+                    <div class="icon-placeholder">📈</div>
+                    <h4>Stakeholder Sanctification Score™</h4>
+                    <span class="value">8.7</span>/10 <span class="trend positive">+0.3 YTD</span>
+                </div>
+                <div class="kpi-widget">
+                     <div class="icon-placeholder">💡</div>
+                    <h4>Return on Illumination (ROI)</h4>
+                    <span class="value">215%</span> <span class="trend positive">+15% QoQ</span>
+                </div>
+                <div class="kpi-widget">
+                    <div class="icon-placeholder">👥</div>
+                    <h4>Congregational Engagement Metric</h4>
+                    <span class="value">93%</span> <span class="trend positive">+5% MoM</span>
+                </div>
+                 <div class="kpi-widget">
+                    <div class="icon-placeholder">🌟</div>
+                    <h4>Miracle Manifestation Rate (MMR)</h4>
+                    <span class="value">7.2</span>/wk <span class="trend positive" style="color:var(--corp-accent-secondary);">Premium Tiers</span>
+                </div>
             </div>
+            <h3>Quarterly Blessings Realization Projection (CSS Animated Chart)</h3>
+            <div class="css-chart-container">
+                <div class="css-chart">
+                    <div class="bar" style="height: 60%; background-color: var(--corp-accent-primary);" title="Q1 Actual"><span >Q1</span></div>
+                    <div class="bar" style="height: 75%; background-color: var(--corp-accent-primary);" title="Q2 Actual"><span>Q2</span></div>
+                    <div class="bar" style="height: 85%; background-color: var(--corp-primary);" title="Q3 Actual"><span>Q3</span></div>
+                    <div class="bar" style="height: 95%; background-color: var(--corp-accent-secondary); animation-delay: 0.5s;" title="Q4 Projected"><span>Q4 Proj.</span></div>
+                </div>
+            </div>
+            <p style="text-align:center; margin-top:30px;">
+                <a href="#" onclick="openTab(event, 'impactMetrics')" class="cta-button-main">View Full Impact Report →</a>
+            </p>
         </div>
 
+        <!-- Solutions Tab -->
         <div id="ourSolutions" class="tab-content">
-            <h2>Our Integrated Spiritual Solutions Portfolio</h2>
-            <p>SSSG offers a diversified portfolio of solutions, meticulously engineered to address the complex spiritual needs of today's dynamic faith marketplace. Each solution is backed by foundational directives and proven methodologies for enhanced spiritual actualization.</p>
+            <h2>Our Solutions: Engineering Spiritual Success</h2>
+            <p>Synergy Spiritual Solutions Group offers a comprehensive suite of market-leading platforms and methodologies designed to optimize every facet of your spiritual operations.</p>
             
-            <div class="directives-section">
-                <h3>Foundational Directive: Creation & Strategic Alignment (Ref: GEN-QUR.CS.001)</h3>
-                <div class="passage-container">
-                    <div class="passage">
-                        <h4>Biblical Framework: Genesis 1 - Initial Operational Blueprint</h4>
-                        <p>"In the beginning God (Elohim) created the heavens and the earth... And God said, Let there be light: and there was light." (Genesis 1:1-3, KJV Analysis)</p>
-                        <p><strong>Corporate Insight:</strong> Establishes the principle of divine initiative and structured implementation. Our 'Genesis Protocol' for new faith ventures mirrors this orderly and authoritative approach to market entry.</p>
-                        <p class="passage-source">Reference Code: B.GEN.1.1-3</p>
-                    </div>
-                    <div class="passage">
-                        <h4>Quranic Framework: Al-Anbiya 21:30 - Unified Origin & Diversification</h4>
-                        <p>"Have not those who disbelieved known that the heavens and the earth were of one connected entity, then We separated them? And We made from water every living thing." (Quran 21:30, Strategic Application)</p>
-                        <p><strong>Corporate Insight:</strong> Highlights the value of integrated origins followed by strategic diversification. SSSG's 'Unity to Utility' model for spiritual asset management is derived from this core principle.</p>
-                        <p class="passage-source">Reference Code: Q.ANB.21.30</p>
-                    </div>
+            <div id="solution-personal" class="solution-card">
+                <div class="visual-placeholder">👤</div>
+                <div class="content">
+                    <h4>Personalized Piety Plans (P3™)</h4>
+                    <p>Leverage AI-driven analytics to craft bespoke devotional pathways. P3™ optimizes individual spiritual growth trajectories by identifying key faith leverage points and mitigating dogmatic drag.</p>
+                    <a href="#webinar-modal" class="cta-button-small">Request P3™ Demo</a>
                 </div>
             </div>
 
-            <div class="directives-section">
-                <h3>Foundational Directive: Stewardship & Resource Optimization (Ref: STEW.RQ.002)</h3>
-                 <div class="passage-container">
-                    <div class="passage">
-                        <h4>Biblical Framework: Genesis 2:15 - Asset Management Mandate</h4>
-                        <p>"And the Lord God took the man, and put him into the garden of Eden to dress it and to keep it." (Genesis 2:15, KJV Interpretation)</p>
-                        <p><strong>Corporate Insight:</strong> The 'Eden Mandate' underscores our commitment to responsible stewardship of spiritual assets and proactive cultivation of faith environments for optimal yield.</p>
-                        <p class="passage-source">Reference Code: B.GEN.2.15</p>
-                    </div>
-                    <div class="passage">
-                        <h4>Quranic Framework: Al-Baqarah 2:22 - Sustainable Resource Utilization</h4>
-                        <p>"[He] who made for you the earth a bed [spread out] and the sky a ceiling and sent down from the sky, rain and brought forth thereby fruits as provision for you. So do not attribute to Allah equals while you know [that there are none]." (Quran 2:22, Contextual Analysis)</p>
-                        <p><strong>Corporate Insight:</strong> Emphasizes sustainable resource management and leveraging divine provisions. Our 'Barakah Blueprint' for charitable endowments aligns with this directive for maximizing societal and spiritual ROI.</p>
-                        <p class="passage-source">Reference Code: Q.BAQ.2.22</p>
-                    </div>
+            <div id="solution-congregational" class="solution-card">
+                <div class="visual-placeholder">⛪</div>
+                <div class="content">
+                    <h4>Congregational Cohesion Catalysts (C3™)</h4>
+                    <p>Our proprietary C3™ platform enhances inter-member synergy, streamlines fellowship workflows, and deploys targeted blessing distribution networks for maximized communal harmony and spiritual output.</p>
+                     <a href="#" class="cta-button-small">Explore C3™ Case Studies</a>
                 </div>
             </div>
-             <!-- Add more "Foundational Directives" -->
+
+            <div id="solution-global" class="solution-card">
+                <div class="visual-placeholder">🌐</div>
+                <div class="content">
+                    <h4>Global Outreach Technologies (GOTek™)</h4>
+                    <p>Expand your spiritual footprint with GOTek™. We provide scalable cloud-based sermon delivery, multi-lingual divine content localization, and virtual reality pilgrimage experiences.</p>
+                    <a href="#" class="cta-button-small">Learn About GOTek™ APIs</a>
+                </div>
+            </div>
+
+            <h3>Foundational Directives & Operational Blueprints (Expandable)</h3>
+            <div class="directive-unit">
+                <input type="checkbox" id="directive1">
+                <label class="directive-header" for="directive1">
+                    <h4>Directive: Strategic Creation (Ref: GEN-QUR.CS.001)</h4>
+                    <span class="toggle-icon">+</span>
+                </label>
+                <div class="directive-content">
+                    <p><strong>Biblical Framework (Genesis 1):</strong> Initial Operational Blueprint emphasizes divine initiative and structured implementation. SSSG's 'Genesis Protocol' for new faith ventures mirrors this orderly approach.</p>
+                    <p><strong>Quranic Framework (Al-Anbiya 21:30):</strong> Unified Origin & Diversification highlights integrated origins followed by strategic diversification. SSSG's 'Unity to Utility' model for spiritual asset management is derived from this.</p>
+                    <p class="passage-source">Full Documentation: SSSG_KB_DQ001.pdf</p>
+                </div>
+            </div>
+             <div class="directive-unit">
+                <input type="checkbox" id="directive2">
+                <label class="directive-header" for="directive2">
+                    <h4>Directive: Stewardship & Resource Optimization (Ref: STEW.RQ.002)</h4>
+                    <span class="toggle-icon">+</span>
+                </label>
+                <div class="directive-content">
+                    <p><strong>Biblical Framework (Genesis 2:15):</strong> The 'Eden Mandate' underscores commitment to responsible stewardship of spiritual assets and proactive cultivation for optimal yield.</p>
+                    <p><strong>Quranic Framework (Al-Baqarah 2:22):</strong> Emphasizes sustainable resource management. Our 'Barakah Blueprint' for charitable endowments aligns with this directive for maximizing societal and spiritual ROI.</p>
+                    <p class="passage-source">Full Documentation: SSSG_KB_DQ002.pdf</p>
+                </div>
+            </div>
+            <!-- Add more directives -->
         </div>
 
+        <!-- Thought Leadership Tab -->
         <div id="thoughtLeadership" class="tab-content">
-            <h2>SSSG Thought Leadership: Paradigms for Peak Piety</h2>
-            <p>Our esteemed board of theological strategists and faith-market analysts regularly publish white papers and strategic briefs on optimizing spiritual workflows and leveraging divine capital.</p>
-            
-            <h3>Featured Publication: "The Synergy of Supplication: A QBR Perspective"</h3>
-            <p>This quarter's flagship report explores the quantifiable impact of synchronized prayer initiatives on key performance indicators such as communal well-being and individual peace metrics. Preliminary data suggests a 12% uplift in stakeholder satisfaction post-implementation of our patented "PrayerGrid™" technology.</p>
-            <img src="https://via.placeholder.com/600x350.png?text=Thought+Leadership+Publication+Cover" alt="Placeholder for publication cover" style="width:100%; max-width:400px; margin:15px 0; border:1px solid var(--corp-border);">
-
-            <h3>Upcoming Webinar: "Faithonomics 101: Diversifying Your Devotional Portfolio"</h3>
-            <p>Join our Chief Spiritual Officer, Dr. Ebenezer Guidepost, for an insightful session on managing your spiritual assets in a volatile karmic market. Learn to identify high-yield blessings and mitigate existential risks. Registration opens Q1.</p>
-            
-            <h3>Core Principle Case Study: Prophetic Communication Channels (Ref: PROP.CC.003)</h3>
-            <div class="passage-container">
-                 <div class="passage">
-                    <h4>Biblical Framework: Hebrews 1:1-2 - Iterative Revelation Protocols</h4>
-                    <p>"God, who at sundry times and in divers manners spake in time past unto the fathers by the prophets, Hath in these last days spoken unto us by his Son..." (Hebrews 1:1-2, KJV System Analysis)</p>
-                    <p><strong>Corporate Insight:</strong> Demonstrates a divine methodology of iterative communication and upgraded revelation deployment. SSSG's 'Version Control Theology' ensures our stakeholders receive the most current and impactful spiritual guidance.</p>
-                    <p class="passage-source">Reference Code: B.HEB.1.1-2</p>
+            <h2>Thought Leadership Hub: Innovating Devotional Paradigms</h2>
+            <p>Access cutting-edge research, strategic insights, and best-practice frameworks from SSSG's leading Theological Innovation Department.</p>
+            <div class="publication-grid">
+                <div class="publication-card">
+                    <div class="cover-art">SSSG<br/>FaithTech Quarterly</div>
+                    <div class="info">
+                        <h4>White Paper: "The Blockchain of Blessings"</h4>
+                        <p>Exploring decentralized ledger technology for transparent and immutable tracking of divine interventions and answered prayers. A game-changer for faith-based auditing.</p>
+                        <a href="#" class="cta-button-main" style="font-size:0.9em; padding:8px 15px;">Download PDF</a>
+                    </div>
                 </div>
-                <div class="passage">
-                    <h4>Quranic Framework: Al-Baqarah 2:285 - Unified Messenger Acceptance Policy</h4>
-                    <p>"The Messenger has believed in what was revealed to him from his Lord... 'We make no distinction between any of His messengers.' And they say, 'We hear and we obey.'" (Quran 2:285, Policy Interpretation)</p>
-                    <p><strong>Corporate Insight:</strong> Mandates an inclusive acceptance of all validated divine communication channels. Our 'Universal Messenger Protocol' ensures comprehensive spiritual data intake and stakeholder alignment.</p>
-                    <p class="passage-source">Reference Code: Q.BAQ.2.285</p>
+                <div class="publication-card">
+                    <div class="cover-art">SSSG<br/>Spiritual Synergy Digest</div>
+                    <div class="info">
+                        <h4>Case Study: "Gamifying Grace: Uplifting Engagement"</h4>
+                        <p>How First Synergy Chapel increased tithing by 35% through a gamified spiritual rewards program powered by SSSG's AngelPoints™ API.</p>
+                        <a href="#" class="cta-button-main" style="font-size:0.9em; padding:8px 15px;">Read Case Study</a>
+                    </div>
+                </div>
+                 <div class="publication-card">
+                    <div class="cover-art">WEBINAR<br/>INVITATION</div>
+                    <div class="info">
+                        <h4>Webinar: "AI & The Almighty: Navigating NextGen Nirvana"</h4>
+                        <p>Join Dr. Seraphina Heuristica for a deep dive into AI's role in sermon personalization, prophecy pattern recognition, and automated spiritual guidance.</p>
+                        <a href="#webinar-modal" class="cta-button-main" style="font-size:0.9em; padding:8px 15px;">Register Now (Free)</a>
+                    </div>
                 </div>
             </div>
         </div>
-        
+        <!-- Webinar Registration Modal -->
+        <div id="webinar-modal" class="modal-overlay">
+            <div class="modal-content">
+                <a href="#" class="close-modal" title="Close">×</a>
+                <h3>Register for "AI & The Almighty" Webinar</h3>
+                <p>Secure your spot for this groundbreaking session!</p>
+                <form class="fake-form" onsubmit="alert('Thank you for registering! A (fake) confirmation email has been sent. This is a parody.'); return false;">
+                    <label for="modal-name">Full Name:</label>
+                    <input type="text" id="modal-name" required>
+                    <label for="modal-email">Email Address:</label>
+                    <input type="email" id="modal-email" required>
+                    <button type="submit" class="cta-button-main" style="width:100%;">Register My Spot</button>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Impact Metrics Tab -->
         <div id="impactMetrics" class="tab-content">
-            <h2>Impact Metrics & Stakeholder Endorsements (Q3 Report)</h2>
-            <p>Synergy Spiritual Solutions Group is committed to transparency and quantifiable results. Our Q3 report indicates significant growth in key spiritual performance areas, directly attributable to stakeholder investment and engagement with our proprietary solutions.</p>
-            
-            <h3>Key Performance Indicators (KPIs):</h3>
-            <ul>
-                <li><strong>Stakeholder Joy Index (SJI):</strong> +18% (Exceeding Q3 Target of 15%)</li>
-                <li><strong>Blessing Realization Rate (BRR):</strong> 92% (Up from 88% in Q2)</li>
-                <li><strong>Spiritual Serenity Score (SSS):</strong> Average 8.5/10 (Industry Leading)</li>
-                <li><strong>New Faith Adoptions (NFA):</strong> 3,500+ new stakeholders onboarded.</li>
-            </ul>
-             <img src="https://via.placeholder.com/800x250.png?text=KPI+Dashboard+-+All+Metrics+Trending+Up" alt="Placeholder KPI dashboard" style="width:100%; max-width:600px; margin:20px auto; display:block; border-radius:var(--border-radius-corp); border:1px solid var(--corp-border);">
-
-            <h3>Stakeholder Endorsements:</h3>
-            <div class="endorsement-card">
-                <p class="quote">"Since partnering with SSSG and implementing their 'GraceFlow Maximizer' solution, our congregation's spiritual output has increased by an estimated 22%. The ROI on our faith investment has been phenomenal!"</p>
-                <p class="attribution">Pastor Jim Goodseed, <span>Lead Facilitator, First Synergy Chapel</span></p>
-            </div>
-            <div class="endorsement-card">
-                <p class="quote">"SSSG's 'Thought Leadership' webinars have completely revolutionized my approach to personal piety. My Serenity Score is through the roof, and I finally understand the market dynamics of divine favor."</p>
-                <p class="attribution">Brenda Faithful, <span>Platinum Tier Investor</span></p>
-            </div>
+            <h2>Quantifiable Impact: Data-Driven Divinity in Action</h2>
+            <p>SSSG is dedicated to transparently reporting on the tangible spiritual and operational uplift experienced by our partners. Our Q3 metrics demonstrate consistent positive trends across all key performance indicators (KPIs).</p>
+            <!-- More interactive KPI presentation could go here -->
+             <h3>Endorsement Showcase: Voices of Our Valued Partners</h3>
              <div class="endorsement-card">
-                <p class="quote">"The Q3 Blessings Report was exceptionally detailed. It's reassuring to see such a clear correlation between our collective spiritual investments and the tangible divine dividends being distributed. SSSG delivers!"</p>
-                <p class="attribution">Mr. Al Truistic, <span>Chief Benevolence Officer, GoodWorks Foundation</span></p>
+                <p class="quote">"SSSG's strategic frameworks transformed our outreach. We've seen a 40% increase in new spiritual inquiries and a significant uplift in our Congregational Cohesion Score after implementing C3™."</p>
+                <p class="attribution">Rev. Dr. Sterling Standard, <span>CEO, Global Grace Ministries</span></p>
+            </div>
+            <div class="endorsement-card">
+                <p class="quote">"The P3™ Personalized Piety Plan has been a revelation for my personal spiritual journey. My Illumination Quotient is up 15 points, and I finally feel aligned with my core divine directives. Highly recommend!"</p>
+                <p class="attribution">Ms. Aura Brightman, <span>Individual Spiritual Growth Client</span></p>
             </div>
         </div>
 
+        <!-- Investor Relations Tab -->
         <div id="investorRelations" class="tab-content" style="background:var(--corp-secondary);">
-            <div class="investment-section">
-                <h2>Investor Relations: Partner for Spiritual Capital Growth</h2>
-                <p>Unlock unparalleled spiritual dividends by investing in Synergy Spiritual Solutions Group. Our tiered partnership packages offer exclusive benefits and enhanced access to our portfolio of divine deliverables. Your investment fuels innovation and expands our global faith footprint.</p>
-                <p><strong>"Where your treasure is, there will your heart (and spiritual ROI) be also."</strong> - SSSG Reinterpretation (Ref: MAT.6.21.SSSG)</p>
-
-                <div class="investment-options">
-                    <button class="investment-button" onclick="alert('Thank you for your Bronze Tier Investment of $500! Processing your Spiritual Stock Options... (Parody: No actual transaction)')">Bronze Partner: $500 <span style="font-size:0.8em; display:block; opacity:0.7;">(Standard Blessing Package)</span></button>
-                    <button class="investment-button" onclick="alert('Thank you for your Silver Tier Investment of $1,000! Allocating Premium Grace Units... (Parody: No actual transaction)')">Silver Partner: $1,000 <span style="font-size:0.8em; display:block; opacity:0.7;">(Enhanced Serenity Access)</span></button>
-                    <button class="investment-button" onclick="alert('Thank you for your Gold Tier Investment of $5,000! Activating Angelic Oversight Protocol... (Parody: No actual transaction)')">Gold Partner: $5,000 <span style="font-size:0.8em; display:block; opacity:0.7;">(VIP Divine Channeling)</span></button>
-                    <button class="investment-button" onclick="alert('Inquire about our Platinum (>$10,000) 'Archangel Alliance' package for bespoke divine interventions. (Parody)')">Platinum Partner <span style="font-size:0.8em; display:block; opacity:0.7;">(Inquire for Custom Miracles)</span></button>
+             <h2 style="border-image: linear-gradient(to right, var(--corp-accent-secondary), var(--corp-primary) 70%) 1;">Investor Relations: Partnering for Exponential Spiritual Growth</h2>
+            <p style="text-align:center; font-size:1.1em;">Invest in the future of faith. SSSG offers strategic partnership tiers designed to maximize your spiritual and financial returns. Our robust growth trajectory and market-leading innovations ensure your investment yields divine dividends.</p>
+            <div class="investment-tier-grid">
+                <div class="investment-tier-card">
+                    <h4>Seraphim Seed Fund</h4>
+                    <div class="price">$5,000 <span>USD</span></div>
+                    <ul>
+                        <li>Standard Blessing Allocation</li>
+                        <li>Quarterly Impact Reports</li>
+                        <li>Access to Core Webinars</li>
+                    </ul>
+                    <a href="#" class="cta-button-main" onclick="alert('Thank you for your interest! (Parody: No transaction)')">Invest Now</a>
                 </div>
-                <div class="custom-investment" style="margin-top:20px;">
-                    <input type="number" placeholder="Custom Investment Amount">
-                    <button class="investment-button" style="background-color:var(--corp-hover-blue); color: var(--corp-text-light);" onclick="alert('Custom Investment Received. Our CFO (Chief Faith Officer) will be in touch. (Parody)')">Initiate Custom Investment</button>
+                <div class="investment-tier-card premium"> <!-- Premium highlighted -->
+                    <h4>Cherubim Capital Growth</h4>
+                    <div class="price">$25,000 <span>USD</span></div>
+                    <ul>
+                        <li>Enhanced Blessing Portfolio</li>
+                        <li>Priority Access to New Solutions</li>
+                        <li>Dedicated Account Seraph</li>
+                        <li>VIP Event Invitations</li>
+                    </ul>
+                     <a href="#" class="cta-button-main" style="background-color:var(--corp-accent-secondary); color:#333;" onclick="alert('Premium choice! (Parody: No transaction)')">Select Premium Tier</a>
                 </div>
-                <p style="margin-top: 30px; font-size: 0.9em;"><em>Synergy Spiritual Solutions Group is a conceptual parody. All investment tiers and financial transactions are illustrative and not real. SSSG does not solicit actual funds.</em></p>
+                <div class="investment-tier-card">
+                    <h4>Archangel Strategic Alliance</h4>
+                    <div class="price">$100,000+ <span>USD</span></div>
+                    <ul>
+                        <li>Bespoke Divine Interventions</li>
+                        <li>Board Advisory Seat (Honorary)</li>
+                        <li>Direct Line to Chief Spiritual Officer</li>
+                        <li>Co-Branded Miracles</li>
+                    </ul>
+                    <a href="#" class="cta-button-main" onclick="alert('High roller! (Parody: No transaction)')">Inquire for Alliance</a>
+                </div>
             </div>
+            <div class="roi-calculator">
+                <h3>Estimate Your Spiritual ROI</h3>
+                <label for="investmentAmount">Initial Faith Investment (USD):</label>
+                <input type="number" id="investmentAmount" placeholder="e.g., 10000">
+                <button type="button" class="cta-button-main" style="width:auto; background-color:var(--corp-primary);" onclick="calculateFakeROI()">Calculate Projected ROI</button>
+                <p id="calculatedROI">Projected ROI: --% (Based on SSSG Historical Performance Models)</p>
+            </div>
+             <p style="text-align:center; font-size:0.9em; color:var(--corp-text-muted); margin-top:30px;"><em>Synergy Spiritual Solutions Group is a conceptual parody. All investment tiers are illustrative. SSSG does not solicit actual funds. Past performance is not indicative of future divine returns.</em></p>
         </div>
-
     </div>
 
     <footer>
         <div class="container">
-            <div class="footer-logo-placeholder">Synergy Spiritual Solutions Group, Inc.</div>
-            <p>© <span id="year"></span> SSSG. All Rights Reserved. Member FDIC (Faithful Divine Investment Corporation - Parody).</p>
-            <p>
-                <a href="#privacy-policy">Privacy & Data Governance Policy</a> | 
-                <a href="#terms-of-service">Terms of Spiritual Service</a> | 
-                <a href="#contact-us">Contact Investor Relations</a> |
-                <a href="#careers">Careers in Faith Innovation</a>
-            </p>
-            <p style="font-size:0.8em; opacity: 0.7; margin-top:15px;"><em>This website is a work of parody and fiction, intended for illustrative purposes. It does not represent a real corporation or solicit investments.</em></p>
+            <div class="footer-logo-placeholder">Synergy Spiritual Solutions Group</div>
+            <div class="footer-nav">
+                <a href="#">About SSSG</a> | <a href="#">Careers</a> | <a href="#">Press Room</a> | <a href="#">Compliance</a> | <a href="#">Contact Us</a>
+            </div>
+            <p>© <span id="year"></span> SSSG Global Holdings, Inc. All Rights Reserved. "Innovating Your Eternal Tomorrow."</p>
+            <p>NASDAQ: SPIRIT (Parody Listing) | Member, Council for Ethical Divine Technologies (CEDT - Fictional)</p>
+            <p style="font-size:0.8em; opacity: 0.7; margin-top:15px;"><em>This website is a work of parody and satire. All products, services, and corporate entities depicted are fictional.</em></p>
         </div>
     </footer>
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // --- Preloader ---
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
-            // Simulate loading time - in reality, this would depend on assets
-            setTimeout(() => {
+            setTimeout(() => { // Simulate boot time
                 preloader.classList.add('loaded');
-                 setTimeout(() => { // Hide after transition
-                    preloader.style.display = 'none';
-                }, 400); // Matches transition duration
-            }, 2000); // Duration of progress bar animation
+                setTimeout(() => { preloader.style.display = 'none'; }, 1000); // Hide after transition + boot text anim
 
-             // Activate the first tab after preloader is done
-            const firstNavButton = document.querySelector('nav .nav-button');
-            if (firstNavButton) {
-                openTab(null, firstNavButton.getAttribute('onclick').match(/'([^']+)'/)[1]);
-                firstNavButton.classList.add('active');
-            }
+                // Activate the first tab after preloader and content are ready
+                const firstNavButton = document.querySelector('nav ul li a.nav-button-style');
+                if (firstNavButton) {
+                    openTab({ currentTarget: firstNavButton }, firstNavButton.getAttribute('onclick').match(/'([^']+)'/)[1]);
+                }
+            }, 2800); // Total preloader display time
         });
 
-
+        // --- Tab Navigation ---
+        let currentActiveTabButton = null;
         function openTab(evt, tabName, isInvestTab = false) {
             var i, tabcontent, tabbuttons;
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
                 tabcontent[i].classList.remove("active");
+                tabcontent[i].style.display = "none"; // Ensure it's hidden before reactivating
             }
-            tabbuttons = document.querySelectorAll("nav .nav-button, nav .invest-button-nav");
-            for (i = 0; i < tabbuttons.length; i++) {
-                tabbuttons[i].classList.remove("active");
+            
+            // Deactivate previous button
+            if(currentActiveTabButton) {
+                currentActiveTabButton.classList.remove("active");
+            }
+            if(evt && evt.currentTarget) {
+                evt.currentTarget.classList.add("active");
+                currentActiveTabButton = evt.currentTarget;
+            } else { // Handle direct calls or special button
+                 const buttons = document.querySelectorAll("nav ul li a.nav-button-style, nav ul li .invest-button-nav-item a");
+                 buttons.forEach(btn => {
+                     if(btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabName)) {
+                         btn.classList.add('active');
+                         currentActiveTabButton = btn;
+                     } else {
+                         btn.classList.remove('active');
+                     }
+                 });
             }
             
             var targetTab = document.getElementById(tabName);
             if (targetTab) {
                 targetTab.style.display = "block";
-                setTimeout(() => targetTab.classList.add("active"), 10); 
+                // Force reflow for animation restart
+                void targetTab.offsetWidth; 
+                targetTab.classList.add("active");
             }
             
-            if (evt && evt.currentTarget) {
-                 evt.currentTarget.classList.add("active");
-            } else if (isInvestTab) { // Corrected variable name
-                const investNavButton = document.querySelector('nav .invest-button-nav');
-                if (investNavButton) investNavButton.classList.add('active');
+            // Scroll to top of content area if not a deep link within tab
+            if (window.scrollY > (targetTab.offsetTop - 100) ) { // 100 is approx nav height + buffer
+                 const navHeight = document.querySelector('nav').offsetHeight || 70;
+                 const elementPosition = document.querySelector('.container').getBoundingClientRect().top + window.pageYOffset; // Scroll to top of main container
+                 const offsetPosition = elementPosition - navHeight - 10; 
+                 window.scrollTo({ top: offsetPosition, behavior: "smooth" });
             }
-
-            if (targetTab) { // Scroll to top of tab, considering nav
-                 const navHeight = document.querySelector('nav').offsetHeight || 60;
-                 const elementPosition = targetTab.getBoundingClientRect().top + window.pageYOffset;
-                 const offsetPosition = elementPosition - navHeight - 20; 
-
-                 window.scrollTo({
-                     top: offsetPosition,
-                     behavior: "smooth"
-                 });
+        }
+        
+        // --- Smooth Scroll for in-page links (like solution cards to sections) ---
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if(element) {
+                const navHeight = document.querySelector('nav').offsetHeight || 70;
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - navHeight - 20; // 20px padding
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         }
 
-        // Initial tab opening handled by preloader's 'load' event listener now.
+        // --- Fake ROI Calculator ---
+        function calculateFakeROI() {
+            const amountInput = document.getElementById('investmentAmount');
+            const resultDisplay = document.getElementById('calculatedROI');
+            const amount = parseFloat(amountInput.value);
+            if (isNaN(amount) || amount <= 0) {
+                resultDisplay.textContent = "Please enter a valid investment amount.";
+                resultDisplay.style.color = "#D32F2F";
+                return;
+            }
+            // Super scientific parody calculation
+            const fakeROI = (Math.random() * 150 + 50 + (amount / 1000)).toFixed(2);
+            resultDisplay.textContent = `Projected Spiritual ROI: ${fakeROI}% Annually (Simulated)`;
+            resultDisplay.style.color = "var(--corp-success)";
+        }
+
+        // --- Accordion Toggle (if needed, though CSS handles current) ---
+        // For more complex states, JS might be used. Current is CSS-only.
+
+        // Ensure the first tab is active on initial load (handled by preloader callback now)
+        // document.addEventListener('DOMContentLoaded', () => { /* ... */ });
+
     </script>
 </body>
 </html>
