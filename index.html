@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparative Religious Texts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            border-bottom: #0779e4 3px solid;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            background: #444;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        nav button {
+            background: #555;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        nav button:hover, nav button.active {
+            background: #0779e4;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .comparison-section {
+            margin-bottom: 30px;
+        }
+        .comparison-section h2 {
+            color: #0779e4;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .passage-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .passage {
+            flex: 1;
+            min-width: 300px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .passage h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .passage p {
+            font-size: 0.95em;
+            text-align: justify;
+        }
+        .passage-source {
+            font-style: italic;
+            font-size: 0.8em;
+            color: #777;
+            text-align: right;
+            margin-top: 10px;
+        }
+        .fun-section {
+            background: #e9f5ff;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+            border-left: 5px solid #0779e4;
+        }
+        .fun-section h2 {
+            color: #333;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            margin-top: 30px;
+        }
+    </style></head>
+<body>
+    <header>
+        <h1>Comparative Study: Bible & Quran</h1>
+    </header>
+
+    <nav>
+        <button class="tab-button" onclick="openTab(event, 'introduction')">Introduction</button>
+        <button class="tab-button" onclick="openTab(event, 'creation')">Theme: Creation</button>
+        <button class="tab-button" onclick="openTab(event, 'prophets')">Theme: Prophets</button>
+        <button class="tab-button" onclick="openTab(event, 'morality')">Theme: Morality</button>
+        <button class="tab-button" onclick="openTab(event, 'fun')">Fun Facts & Reflections</button>
+    </nav>
+
+    <div class="container">
+        <div id="introduction" class="tab-content">
+            <h2>Welcome!</h2>
+            <p>This website aims to present passages from the Holy Bible and the Holy Quran side-by-side for comparative study and reflection. The goal is to foster understanding and allow readers to explore the rich textual traditions of these faiths.</p>
+            <p><strong>Sources:</strong> For Biblical passages, references are generally in line with versions like the KJV or NIV, often cross-referenced with tools like the Blue Letter Bible for textual details. For Quranic passages, references are typically from well-regarded English translations, with conceptual links to resources like Corpus Quran for linguistic analysis.</p>
+            <p><strong>Note:</strong> This site presents texts for personal study. It does not aim to provide definitive theological interpretations or declare one text "correct" over another. Such matters are deeply personal and best explored through individual faith, study, and guidance from qualified religious scholars.</p>
+        </div>
+
+        <div id="creation" class="tab-content">
+            <h2>Theme: The Story of Creation</h2>
+            <div class="comparison-section">
+                <div class="passage-container">
+                    <div class="passage">
+                        <h3>Bible: Genesis</h3>
+                        <p>"In the beginning God created the heavens and the earth. Now the earth was formless and empty, darkness was over the surface of the deep, and the Spirit of God was hovering over the waters. And God said, 'Let there be light,' and there was light."</p>
+                        <p class="passage-source">Genesis 1:1-3 (NIV)</p>
+                        <p>You would add more details here, drawing concepts from Blue Letter Bible studies, e.g., original Hebrew words for "create," "Spirit," etc.</p>
+                    </div>
+                    <div class="passage">
+                        <h3>Quran: Al-A'raf</h3>
+                        <p>"Indeed, your Lord is Allah, who created the heavens and earth in six days and then established Himself above the Throne. He covers the night with the day, [another night] chasing it rapidly; and [He created] the sun, the moon, and the stars, subjected by His command. Unquestionably, His is the creation and the command; blessed is Allah, Lord of the worlds."</p>
+                        <p class="passage-source">Quran 7:54 (Sahih International)</p>
+                        <p>You would add more details here, drawing concepts from Corpus Quran, e.g., Arabic terms for "created," "Throne," linguistic nuances.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more comparison sections within this tab if needed -->
+        </div>
+
+        <div id="prophets" class="tab-content">
+            <h2>Theme: Stories of Prophets (e.g., Abraham/Ibrahim)</h2>
+            <div class="comparison-section">
+                 <p>Placeholder: Add comparative passages about key prophetic figures like Abraham (Ibrahim), Moses (Musa), Jesus (Isa), etc.</p>
+                 <div class="passage-container">
+                    <div class="passage">
+                        <h3>Bible: Abraham</h3>
+                        <p>"The Lord had said to Abram, 'Go from your country, your people and your father’s household to the land I will show you...'"</p>
+                        <p class="passage-source">Genesis 12:1 (NIV) - Placeholder</p>
+                    </div>
+                    <div class="passage">
+                        <h3>Quran: Ibrahim</h3>
+                        <p>"And [mention, O Muhammad], when Ibrahim said to his father Azar, 'Do you take idols as deities? Indeed, I see you and your people to be in manifest error.'"</p>
+                        <p class="passage-source">Quran 6:74 (Sahih International) - Placeholder</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="morality" class="tab-content">
+            <h2>Theme: Moral Teachings (e.g., Charity, Justice)</h2>
+            <div class="comparison-section">
+                <p>Placeholder: Add comparative passages about moral and ethical teachings.</p>
+                 <div class="passage-container">
+                    <div class="passage">
+                        <h3>Bible: Charity</h3>
+                        <p>"Sell your possessions and give to the poor. Provide purses for yourselves that will not wear out, a treasure in heaven that will never fail, where no thief comes near and no moth destroys."</p>
+                        <p class="passage-source">Luke 12:33 (NIV) - Placeholder</p>
+                    </div>
+                    <div class="passage">
+                        <h3>Quran: Charity (Zakat/Sadaqah)</h3>
+                        <p>"And establish prayer and give zakah, and whatever good you put forward for yourselves - you will find it with Allah. Indeed, Allah of what you do, is Seeing."</p>
+                        <p class="passage-source">Quran 2:110 (Sahih International) - Placeholder</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="fun" class="tab-content">
+            <h2>Fun Facts & Reflections Corner</h2>
+            <div class="fun-section">
+                <h3>Did You Know?</h3>
+                <p><strong>Linguistic Connections:</strong> Many names of prophets are similar in Hebrew, Aramaic, and Arabic, reflecting shared Semitic roots. For example, Abraham (Hebrew) is Ibrahim (Arabic).</p>
+                <p><strong>Calligraphy:</strong> Both Christian and Islamic traditions have rich histories of beautiful calligraphy for their sacred texts. Explore examples of illuminated manuscripts and Quranic calligraphy!</p>
+            </div>
+            <div class="fun-section">
+                <h3>Reflection Prompts</h3>
+                <ul>
+                    <li>What common themes do you observe in the creation narratives?</li>
+                    <li>How do different traditions portray the role and character of prophets?</li>
+                    <li>What moral teachings resonate with you most strongly from these texts?</li>
+                </ul>
+            </div>
+             <div class="fun-section">
+                <h3>Further Study Tools</h3>
+                <p>To deepen your understanding, consider exploring these (or similar) resources:</p>
+                <ul>
+                    <li><strong>For Bible Study:</strong> <a href="https://www.blueletterbible.org" target="_blank">Blue Letter Bible</a> (offers concordances, lexicons, commentaries).</li>
+                    <li><strong>For Quran Study:</strong> <a href="https://corpus.quran.com" target="_blank">Corpus Quran</a> (provides morphological analysis of Arabic).</li>
+                    <li>Academic books on comparative religion.</li>
+                    <li>Interfaith dialogues and discussions.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© <span id="year"></span> Comparative Religious Texts Study. For educational purposes only.</p>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Tab functionality
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Open the first tab by default
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementsByClassName('tab-button')[0].click();
+        });
+    </script>
+</body>
+</html>
