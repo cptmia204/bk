@@ -3,28 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Aethel Archives - Echoes of Revelation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600&family=Spectral:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Synergy Spiritual Solutions Group - Innovating Faith.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color-start: #0f0c29;
-            --bg-color-mid: #302b63;
-            --bg-color-end: #24243e;
-            --primary-glow: #00e5ff; /* Cyan/Teal glow */
-            --secondary-glow: #ff00ff; /* Magenta glow */
-            --accent-gold: #FFD700; /* Sacred Gold */
-            --text-color: #e0e0e0;
-            --text-muted: #a0a0a0;
-            --panel-bg: rgba(20, 20, 40, 0.7); /* Translucent dark panel */
-            --panel-border: rgba(0, 229, 255, 0.3);
-            --border-radius-main: 10px;
-            --transition-main: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --font-primary: 'Rajdhani', sans-serif;
-            --font-secondary: 'Spectral', serif; /* For sacred texts */
-            --font-display: 'Orbitron', sans-serif; /* For titles/HUD elements */
+            --corp-primary: #004A99; /* Deep Corporate Blue */
+            --corp-secondary: #F0F4F8; /* Light Grey Background */
+            --corp-accent: #4CAF50; /* Success Green for CTAs */
+            --corp-text: #333333;
+            --corp-text-light: #FFFFFF;
+            --corp-border: #D1D9E0;
+            --corp-hover-blue: #003B7A;
+            --corp-hover-green: #3E8E41;
+            --font-main: 'Roboto', sans-serif;
+            --font-headings: 'Montserrat', sans-serif;
+            --border-radius-corp: 4px; /* Subtle rounding */
+            --transition-corp: 0.3s ease-out;
+            --box-shadow-corp: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Preloader */
+        /* Corporate Preloader */
         #preloader {
             position: fixed;
             left: 0;
@@ -32,767 +30,569 @@
             width: 100%;
             height: 100%;
             z-index: 99999;
-            background: var(--bg-color-start);
+            background: #fff; /* Solid white background */
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+            transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
         }
         #preloader.loaded {
             opacity: 0;
             visibility: hidden;
         }
-        .loader-cube {
-            width: 60px;
-            height: 60px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: spinCube 8s infinite linear;
+        .progress-bar-container {
+            width: 250px;
+            height: 20px;
+            background-color: var(--corp-border);
+            border-radius: var(--border-radius-corp);
+            overflow: hidden;
+            margin-bottom: 15px;
         }
-        .loader-cube .face {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border: 2px solid var(--primary-glow);
-            background: rgba(0, 229, 255, 0.1);
-            box-shadow: 0 0 15px var(--primary-glow), inset 0 0 10px var(--primary-glow);
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--corp-primary);
+            animation: loadProgress 2s ease-out forwards; /* Simulates loading */
         }
-        .face.front  { transform: translateZ(30px); }
-        .face.back   { transform: rotateY(180deg) translateZ(30px); }
-        .face.left   { transform: rotateY(-90deg) translateZ(30px); }
-        .face.right  { transform: rotateY(90deg) translateZ(30px); }
-        .face.top    { transform: rotateX(90deg) translateZ(30px); }
-        .face.bottom { transform: rotateX(-90deg) translateZ(30px); }
         #preloader p {
-            font-family: var(--font-display);
-            color: var(--primary-glow);
-            margin-top: 20px;
-            font-size: 1.2em;
-            letter-spacing: 2px;
-            text-shadow: 0 0 5px var(--primary-glow);
+            font-family: var(--font-headings);
+            color: var(--corp-primary);
+            font-size: 1em;
+            letter-spacing: 0.5px;
         }
-        @keyframes spinCube {
-            0% { transform: rotateX(0deg) rotateY(0deg); }
-            100% { transform: rotateX(360deg) rotateY(360deg); }
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            20% { width: 15%; } /* Uneven progress for realism */
+            50% { width: 55%; }
+            80% { width: 75%; }
+            100% { width: 100%; }
         }
-
 
         body {
-            font-family: var(--font-primary);
+            font-family: var(--font-main);
             margin: 0;
             padding: 0;
-            background: linear-gradient(-45deg, var(--bg-color-start), var(--bg-color-mid), var(--bg-color-end), var(--bg-color-mid));
-            background-size: 400% 400%;
-            animation: gradientBG 25s ease infinite;
-            color: var(--text-color);
-            line-height: 1.7;
-            font-size: 17px; /* Slightly larger base */
-            overflow-x: hidden; /* Prevent horizontal scroll from pseudo-elements */
-        }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background-color: var(--corp-secondary);
+            color: var(--corp-text);
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
         }
 
         .container {
             width: 90%;
-            max-width: 1400px; /* Wider for more content */
+            max-width: 1280px; /* Standard corporate width */
             margin: auto;
             padding: 0 20px;
-            position: relative; /* For z-indexing children */
         }
 
-        /* Header & "Entrance" */
+        /* Header - Corporate Banner */
         header {
-            padding: 100px 20px 120px 20px; /* More padding */
-            text-align: center;
-            position: relative;
-            overflow: hidden; /* For pseudo-elements */
-            border-bottom: 2px solid var(--primary-glow);
-            box-shadow: 0 5px 30px rgba(0, 229, 255, 0.2);
+            background: var(--corp-primary);
+            color: var(--corp-text-light);
+            padding: 40px 0; /* More concise header */
+            border-bottom: 5px solid var(--corp-accent);
         }
-        header::before, header::after { /* Decorative glowing lines */
-            content: '';
-            position: absolute;
-            left: 50%;
-            width: 2px;
-            height: 0;
-            background: var(--primary-glow);
-            box-shadow: 0 0 10px var(--primary-glow);
-            animation: drawLine 3s ease-out forwards;
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        header::before { top: 0; transform: translateX(-100px); animation-delay: 0.5s; }
-        header::after { bottom: 0; transform: translateX(100px); animation-delay: 1s; }
-        @keyframes drawLine {
-            to { height: 100%; }
-        }
-        header h1 {
-            font-family: var(--font-display);
-            font-size: 4.5em; /* Impactful title */
+        .logo-area h1 {
+            font-family: var(--font-headings);
+            font-size: 2.5em; /* Professional size */
             font-weight: 700;
-            color: #fff;
-            text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow), 0 0 30px var(--secondary-glow);
-            margin: 0 0 15px 0;
-            letter-spacing: 3px;
-            animation: textGlow 2s infinite alternate;
+            margin: 0;
+            letter-spacing: -1px; /* Tighter spacing */
         }
-        @keyframes textGlow {
-            from { text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow), 0 0 30px var(--secondary-glow); }
-            to { text-shadow: 0 0 15px var(--primary-glow), 0 0 30px var(--secondary-glow), 0 0 40px var(--primary-glow); }
+        .logo-area .slogan {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-top: 5px;
         }
-        header p.subtitle {
-            font-family: var(--font-primary);
-            font-size: 1.8em;
-            margin-top: 10px;
-            color: var(--text-muted);
-            opacity: 0.9;
-            letter-spacing: 1px;
+        .header-contact-info { /* Placeholder for contact/login */
+            font-size: 0.9em;
+            text-align: right;
         }
-        .header-cta-button {
-            display: inline-block;
-            background: transparent;
-            color: var(--primary-glow);
-            border: 2px solid var(--primary-glow);
-            padding: 18px 40px;
-            font-size: 1.3em;
-            font-weight: 600;
-            font-family: var(--font-display);
-            border-radius: 50px;
+        .header-contact-info a {
+            color: var(--corp-text-light);
             text-decoration: none;
-            margin-top: 40px;
-            transition: var(--transition-main), transform 0.2s ease, box-shadow var(--transition-main);
-            box-shadow: 0 0 15px var(--primary-glow), inset 0 0 10px rgba(0, 229, 255, 0.2);
+            margin-left: 15px;
         }
-        .header-cta-button:hover {
-            background: rgba(0, 229, 255, 0.1);
-            color: #fff;
-            box-shadow: 0 0 25px var(--primary-glow), 0 0 10px var(--secondary-glow), inset 0 0 15px rgba(0, 229, 255, 0.3);
-            transform: translateY(-3px) scale(1.05);
+        .header-contact-info a:hover {
+            text-decoration: underline;
         }
 
-        /* Navigation - Holographic Console */
+        /* Navigation - Professional Toolbar */
         nav {
-            background: rgba(10, 10, 20, 0.5); /* Darker translucent */
-            backdrop-filter: blur(10px) saturate(150%); /* Glassmorphism */
-            padding: 1rem 0;
+            background: #fff;
+            padding: 0.8rem 0;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--panel-border);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--corp-border);
         }
-        nav .nav-button, nav .give-button-nav {
-            font-family: var(--font-display);
+        nav .nav-button, nav .invest-button-nav {
+            font-family: var(--font-headings);
             background: transparent;
-            color: var(--primary-glow);
-            border: 1px solid transparent;
-            padding: 15px 25px;
-            margin: 0 5px;
+            color: var(--corp-primary);
+            border: none;
+            padding: 12px 20px;
+            margin: 0 3px;
             cursor: pointer;
-            border-radius: var(--border-radius-main);
-            font-size: 1.1em;
-            transition: var(--transition-main);
+            border-radius: var(--border-radius-corp);
+            font-size: 1em; /* Standard nav size */
+            transition: var(--transition-corp);
             text-transform: uppercase;
-            font-weight: 400;
-            letter-spacing: 1.5px;
-            position: relative;
-        }
-        nav .nav-button::before, nav .give-button-nav::before { /* Underline effect */
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: var(--secondary-glow);
-            transition: width var(--transition-main);
-        }
-        nav .nav-button:hover::before, nav .nav-button.active::before, nav .give-button-nav:hover::before {
-            width: 80%;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
         nav .nav-button:hover, nav .nav-button.active {
-            color: #fff;
-            text-shadow: 0 0 8px var(--primary-glow);
+            background: var(--corp-secondary);
+            color: var(--corp-hover-blue);
         }
-        nav .give-button-nav {
-            border: 1px solid var(--secondary-glow);
-            color: var(--secondary-glow);
-            box-shadow: inset 0 0 8px rgba(255,0,255,0.3);
+        nav .invest-button-nav {
+            background-color: var(--corp-accent);
+            color: var(--corp-text-light);
         }
-        nav .give-button-nav:hover {
-            background: rgba(255,0,255,0.1);
-            color: #fff;
-            text-shadow: 0 0 8px var(--secondary-glow);
+        nav .invest-button-nav:hover {
+            background-color: var(--corp-hover-green);
         }
 
-        /* Tab Content - Floating Data Panels */
+        /* Tab Content - Clean Sections */
         .tab-content {
             display: none;
-            padding: 40px 30px;
-            background: var(--panel-bg);
-            backdrop-filter: blur(15px) saturate(120%);
-            margin-top: 50px;
-            border-radius: var(--border-radius-main);
-            border: 1px solid var(--panel-border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 0 20px rgba(0, 229, 255, 0.1);
-            position: relative; /* For pseudo elements */
-            overflow: hidden;
+            padding: 40px 20px;
+            background: #fff;
+            margin-top: 30px;
+            border-radius: var(--border-radius-corp);
+            border: 1px solid var(--corp-border);
+            box-shadow: var(--box-shadow-corp);
         }
-         .tab-content::before { /* Corner accent */
-            content: '';
-            position: absolute;
-            top: -1px; left: -1px;
-            width: 30px; height: 30px;
-            border-top: 2px solid var(--primary-glow);
-            border-left: 2px solid var(--primary-glow);
-            border-radius: var(--border-radius-main) 0 0 0;
-             transition: var(--transition-main);
-        }
-        .tab-content:hover::before {
-            width: 50px; height: 50px;
-            box-shadow: 0 0 10px var(--primary-glow);
-        }
-
         .tab-content.active {
             display: block;
-            animation: panelAppear 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+            animation: fadeInCorp 0.5s ease-out forwards;
         }
-        @keyframes panelAppear {
-            from { opacity: 0; transform: translateY(50px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes fadeInCorp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .tab-content h2 {
-            font-family: var(--font-display);
-            font-size: 2.8em;
-            color: #fff;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid;
-            border-image: linear-gradient(to right, var(--primary-glow), var(--secondary-glow)) 1;
-            text-align: center;
-            letter-spacing: 2px;
-            text-shadow: 0 0 8px var(--primary-glow);
+            font-family: var(--font-headings);
+            font-size: 2.2em;
+            color: var(--corp-primary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--corp-accent);
+            text-align: left; /* Corporate standard */
+            font-weight: 700;
         }
-        .tab-content h3 { /* Sub-headings within tabs */
-             font-family: var(--font-display);
-             font-size: 1.8em;
-             color: var(--primary-glow);
-             margin-top: 40px;
-             margin-bottom: 20px;
-             letter-spacing: 1px;
+        .tab-content h3 {
+             font-family: var(--font-headings);
+             font-size: 1.6em;
+             color: var(--corp-hover-blue);
+             margin-top: 30px;
+             margin-bottom: 15px;
+             font-weight: 500;
+        }
+        .tab-content p {
+            margin-bottom: 1.2em;
+            font-size: 1.05em; /* Slightly larger for readability */
+        }
+        .tab-content ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-bottom: 1.2em;
+        }
+        .tab-content ul li {
+            margin-bottom: 0.5em;
         }
 
-
-        /* Passage Styling - "Sacred Data Tablets" */
-        .comparison-section {
-            margin-bottom: 50px;
+        /* "Foundational Directives" - Passage Styling */
+        .directives-section { /* Renamed from comparison-section */
+            margin-bottom: 40px;
         }
-        .passage-container {
+        .passage-container { /* Re-using, maybe rename to .directive-container */
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 35px;
-            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
         }
-        .passage {
-            background: rgba(30, 30, 50, 0.6); /* Slightly different panel color */
-            padding: 25px;
-            border-radius: var(--border-radius-main);
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3), inset 0 0 10px rgba(0,0,0,0.2);
-            transition: transform var(--transition-main), box-shadow var(--transition-main);
-            position: relative;
-            overflow: hidden;
-        }
-        .passage::before { /* Top glowing bar */
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow));
-            transition: width 0.5s var(--transition-main);
-        }
-        .passage:hover::before {
-            width: 100%;
+        .passage { /* Now "Directive Unit" */
+            background: var(--corp-secondary);
+            padding: 20px;
+            border-radius: var(--border-radius-corp);
+            border: 1px solid var(--corp-border);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: var(--transition-corp);
         }
         .passage:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(0, 229, 255, 0.2), 0 0 15px var(--secondary-glow), inset 0 0 15px rgba(0,0,0,0.3);
-            border-color: var(--primary-glow);
+            border-color: var(--corp-primary);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         }
-        .passage h4 {
-            font-family: var(--font-display);
+        .passage h4 { /* "Directive Title" */
+            font-family: var(--font-headings);
             margin-top: 0;
-            color: var(--accent-gold);
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
-            padding-bottom: 10px;
-            letter-spacing: 1px;
-            text-shadow: 0 0 5px var(--accent-gold);
-        }
-        .passage p {
-            font-family: var(--font-secondary); /* Spectral for scriptures */
-            font-size: 1.1em; /* More readable scriptural text */
-            text-align: left;
+            color: var(--corp-primary);
+            font-size: 1.3em;
             margin-bottom: 12px;
-            color: var(--text-color);
-            line-height: 1.8;
+            border-bottom: 1px solid var(--corp-border);
+            padding-bottom: 8px;
+            font-weight: 500;
         }
-        .passage-source {
-            font-family: var(--font-primary);
+        .passage p { /* Directive text */
+            font-family: var(--font-main);
+            font-size: 1em;
+            color: var(--corp-text);
+        }
+        .passage-source { /* "Reference Code" */
+            font-family: var(--font-main);
             font-style: normal;
-            font-size: 0.9em;
-            color: var(--text-muted);
+            font-size: 0.85em;
+            color: #777;
             text-align: right;
-            margin-top: 20px;
+            margin-top: 15px;
             display: block;
-            opacity: 0.7;
         }
 
-        /* "Power the Archives" (Giving) Section */
-        .giving-section {
-            background: linear-gradient(135deg, var(--secondary-glow) 0%, var(--primary-glow) 100%);
-            color: #000; /* Dark text on bright glow */
-            padding: 40px;
-            border-radius: var(--border-radius-main);
+        /* "Investment Tiers" (Giving) Section */
+        .investment-section { /* Renamed */
+            background: linear-gradient(to right, var(--corp-primary) , var(--corp-hover-blue));
+            color: var(--corp-text-light);
+            padding: 30px;
+            border-radius: var(--border-radius-corp);
             text-align: center;
             margin-top: 30px;
-            box-shadow: 0 0 30px var(--secondary-glow), 0 0 20px var(--primary-glow);
         }
-        .giving-section h2 {
-            font-family: var(--font-display);
-            color: #fff; /* White title on bright glow */
-            text-shadow: 0 0 5px #000;
-            border-bottom-color: rgba(255,255,255,0.5);
-            font-size: 2.5em;
+        .investment-section h2 {
+            color: var(--corp-text-light);
+            border-bottom-color: var(--corp-accent);
+            font-size: 2em;
         }
-        .giving-section p {
-            font-size: 1.2em;
-            margin-bottom: 25px;
-            font-family: var(--font-primary);
-            color: #222; /* Darker text */
+        .investment-section p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            opacity: 0.9;
         }
-        .donation-options {
+        .investment-options { /* Renamed */
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 25px;
+            gap: 15px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
-        .donation-button {
-            background: rgba(15, 12, 41, 0.8); /* Dark button on bright bg */
-            color: var(--primary-glow);
-            font-family: var(--font-display);
-            font-weight: 600;
-            border: 2px solid var(--primary-glow);
-            padding: 18px 35px;
-            font-size: 1.1em;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition-main), transform 0.2s ease;
-            box-shadow: 0 0 10px var(--primary-glow), inset 0 0 8px rgba(0, 229, 255, 0.2);
-        }
-        .donation-button:hover {
-            background: rgba(0, 229, 255, 0.9);
-            color: var(--bg-color-start);
-            border-color: var(--bg-color-start);
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--primary-glow);
-        }
-        .custom-amount input {
-            padding: 15px 20px;
-            font-size: 1em;
-            border: 2px solid var(--primary-glow);
-            border-radius: var(--border-radius-main);
-            margin-right: 10px;
-            width: 200px;
-            background: rgba(15, 12, 41, 0.7);
-            color: var(--text-color);
-            font-family: var(--font-primary);
-        }
-
-        /* General Call to Action Button Styling - Ethereal */
-        .cta-button {
-            display: inline-block;
-            background: transparent;
-            color: var(--accent-gold);
-            border: 2px solid var(--accent-gold);
+        .investment-button { /* Renamed */
+            background-color: var(--corp-accent);
+            color: var(--corp-text-light);
+            font-family: var(--font-headings);
+            font-weight: 500;
+            border: none;
             padding: 15px 30px;
-            font-size: 1.1em;
-            font-weight: 600;
-            font-family: var(--font-display);
-            border-radius: 50px;
-            text-decoration: none;
-            margin-top: 20px;
-            transition: var(--transition-main), transform 0.2s ease;
-            box-shadow: 0 0 15px var(--accent-gold), inset 0 0 10px rgba(255, 215, 0, 0.2);
-            text-shadow: 0 0 5px var(--accent-gold);
+            font-size: 1.05em;
+            border-radius: var(--border-radius-corp);
+            cursor: pointer;
+            transition: var(--transition-corp);
         }
-        .cta-button:hover {
-            background: rgba(255, 215, 0, 0.15);
-            color: #fff;
-            box-shadow: 0 0 25px var(--accent-gold), inset 0 0 15px rgba(255, 215, 0, 0.3);
-            transform: translateY(-2px) scale(1.03);
+        .investment-button:hover {
+            background-color: var(--corp-hover-green);
+            transform: translateY(-2px);
         }
-
-        /* Mission Section List Styling - Data Streams */
-        #ourMission ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        #ourMission ul li {
-            font-size: 1.1em;
-            padding: 12px 0 12px 40px;
-            position: relative;
-            margin-bottom: 12px;
-            border-bottom: 1px dashed rgba(0, 229, 255, 0.2);
-            transition: color var(--transition-main), text-shadow var(--transition-main);
-        }
-        #ourMission ul li:hover {
-            color: var(--primary-glow);
-            text-shadow: 0 0 5px var(--primary-glow);
-        }
-        #ourMission ul li:before { /* Abstract icon */
-            content: "»"; /* "Data packet" icon */
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary-glow);
-            font-size: 1.8em;
-            font-weight: bold;
-            transition: transform var(--transition-main), text-shadow var(--transition-main);
-        }
-         #ourMission ul li:hover::before {
-            transform: translateY(-50%) translateX(5px) scale(1.1);
-            text-shadow: 0 0 8px var(--primary-glow);
-        }
-         #ourMission ul li:last-child {
-            border-bottom: none;
-        }
-
-        /* Testimonial Cards - Holo-messages */
-        .testimonial-card {
-            background: rgba(40, 40, 60, 0.7);
-            padding: 25px;
-            border-radius: var(--border-radius-main);
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border-left: 4px solid var(--secondary-glow);
-            position: relative;
-        }
-        .testimonial-card::after { /* Scanline effect */
-            content: '';
-            position: absolute;
-            top:0; left:0; right:0; bottom:0;
-            background: repeating-linear-gradient(
-                transparent,
-                transparent 2px,
-                rgba(0, 229, 255, 0.03) 2px,
-                rgba(0, 229, 255, 0.03) 4px
-            );
-            pointer-events: none;
-            z-index: 1;
-        }
-        .testimonial-card p:first-child { /* The quote itself */
-            font-family: var(--font-secondary);
-            font-style: italic;
-            font-size: 1.2em;
-            margin-bottom: 15px;
-            color: var(--text-color);
-            position: relative; z-index: 2;
-        }
-        .testimonial-card p.attribution {
-            font-family: var(--font-display);
-            text-align: right;
-            font-weight: 600;
-            color: var(--secondary-glow);
+        .custom-investment input { /* Renamed */
+            padding: 12px 15px;
             font-size: 1em;
-            letter-spacing: 1px;
-            text-shadow: 0 0 5px var(--secondary-glow);
-            position: relative; z-index: 2;
+            border: 1px solid var(--corp-border);
+            border-radius: var(--border-radius-corp);
+            margin-right: 10px;
+            width: 180px;
+        }
+
+        /* General Call to Action Button Styling - Corporate Standard */
+        .cta-button-corp {
+            display: inline-block;
+            background-color: var(--corp-accent);
+            color: var(--corp-text-light);
+            padding: 12px 25px;
+            font-size: 1.05em;
+            font-weight: 500;
+            font-family: var(--font-headings);
+            border-radius: var(--border-radius-corp);
+            text-decoration: none;
+            margin-top: 15px;
+            transition: var(--transition-corp);
+        }
+        .cta-button-corp:hover {
+            background-color: var(--corp-hover-green);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        /* "Stakeholder Endorsements" (Testimonials) */
+        .endorsement-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: var(--border-radius-corp);
+            margin-bottom: 20px;
+            border: 1px solid var(--corp-border);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .endorsement-card p.quote {
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #555;
+            padding-left: 20px;
+            border-left: 3px solid var(--corp-accent);
+        }
+        .endorsement-card p.attribution {
+            text-align: right;
+            font-weight: 700; /* Bolder attribution */
+            color: var(--corp-primary);
+            font-size: 1em;
+        }
+        .endorsement-card p.attribution span {
+            font-weight: 400;
+            font-size: 0.9em;
+            color: #777;
         }
 
 
-        /* Footer - Cosmic Echo */
+        /* Footer - Standard Corporate Footer */
         footer {
             text-align: center;
-            padding: 70px 20px 50px 20px;
-            background: transparent; /* Rely on body gradient */
-            color: var(--text-muted);
-            margin-top: 60px;
-            border-top: 1px solid rgba(0, 229, 255, 0.2);
-            position: relative;
-        }
-         footer::before { /* Starfield illusion */
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(circle at 20% 30%, rgba(0,229,255,0.05) 1px, transparent 1px),
-                              radial-gradient(circle at 80% 70%, rgba(255,0,255,0.05) 1px, transparent 1px),
-                              radial-gradient(circle at 50% 50%, rgba(255,215,0,0.05) 1px, transparent 1px);
-            background-size: 50px 50px, 70px 70px, 60px 60px;
-            opacity: 0.5;
-            pointer-events: none;
-            animation: starsPulse 10s infinite alternate;
-        }
-        @keyframes starsPulse {
-            from { opacity: 0.3; }
-            to { opacity: 0.7; }
+            padding: 30px 20px;
+            background: var(--corp-hover-blue); /* Darker blue */
+            color: rgba(255,255,255,0.7);
+            margin-top: 40px;
+            font-size: 0.9em;
         }
         footer p {
-            margin: 10px 0;
-            font-family: var(--font-primary);
-            position: relative; z-index: 1; /* Above starfield */
+            margin: 5px 0;
         }
         footer a {
-            color: var(--primary-glow);
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
-            transition: color var(--transition-main), text-shadow var(--transition-main);
+            margin: 0 8px;
         }
         footer a:hover {
+            text-decoration: underline;
             color: #fff;
-            text-shadow: 0 0 8px var(--primary-glow);
         }
-        footer .footer-logo-placeholder {
-            font-family: var(--font-display);
-            font-size: 2em;
-            color: var(--accent-gold);
-            text-shadow: 0 0 10px var(--accent-gold);
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            position: relative; z-index: 1;
+        .footer-logo-placeholder {
+            font-family: var(--font-headings);
+            font-size: 1.5em;
+            color: #fff;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
-
     </style>
 </head>
 <body>
     <div id="preloader">
-        <div class="loader-cube">
-            <div class="face front"></div> <div class="face back"></div>
-            <div class="face left"></div> <div class="face right"></div>
-            <div class="face top"></div> <div class="face bottom"></div>
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
         </div>
-        <p>ENTERING THE ARCHIVES...</p>
+        <p>INITIALIZING SPIRITUAL SYNERGY...</p>
     </div>
 
     <header>
-        <h1>The Aethel Archives</h1>
-        <p class="subtitle">Echoes of Revelation - Ancient Wisdom in a New Light</p>
-        <a href="#giving" onclick="openTab(event, 'giving', true)" class="header-cta-button">◇ Power the Archives ◇</a>
+        <div class="container">
+            <div class="logo-area">
+                <h1>Synergy Spiritual Solutions Group</h1>
+                <p class="slogan">Innovating Faith. Delivering Divinity. Maximizing Your Spiritual ROI.</p>
+            </div>
+            <div class="header-contact-info">
+                <span>Client Portal | <a href="#">Support</a> | <a href="#">Login</a></span>
+            </div>
+        </div>
     </header>
 
     <nav>
-        <button class="nav-button" onclick="openTab(event, 'welcome')">✦ Portal</button>
-        <button class="nav-button" onclick="openTab(event, 'exploringTexts')">📜 Sacred Scrolls</button>
-        <button class="nav-button" onclick="openTab(event, 'ourMission')">🌌 Our Beacon</button>
-        <button class="nav-button" onclick="openTab(event, 'insights')">✨ Lumina Echoes</button>
-        <button class="give-button-nav" onclick="openTab(event, 'giving', true)">💖 Sustain</button>
+        <button class="nav-button" onclick="openTab(event, 'homeDashboard')">Dashboard</button>
+        <button class="nav-button" onclick="openTab(event, 'ourSolutions')">Our Solutions</button>
+        <button class="nav-button" onclick="openTab(event, 'thoughtLeadership')">Thought Leadership</button>
+        <button class="nav-button" onclick="openTab(event, 'impactMetrics')">Impact Metrics</button>
+        <button class="invest-button-nav" onclick="openTab(event, 'investorRelations', true)">Investor Relations</button>
     </nav>
 
     <div class="container">
-        <div id="welcome" class="tab-content">
-            <h2>Accessing the Archives... Welcome, Seeker.</h2>
-            <p>You stand at the threshold of The Aethel Archives, a digital sanctum where ancient wisdom converges with the currents of the new age. Our purpose is to illuminate the profound narratives and divine revelations that have shaped civilizations, offering them for your contemplation in a realm beyond time.</p>
-            <p>Here, the echoes of sacred texts resonate, inviting exploration and understanding. Traverse these data streams, engage with timeless truths, and connect with a continuum of seekers dedicated to the evolution of consciousness. The journey into profound insight begins with a single query. Let your curiosity be your guide.</p>
-            <p>This Archive thrives on shared energy. Consider empowering our mission to preserve and expand this repository of knowledge for generations to come.</p>
+        <div id="homeDashboard" class="tab-content">
+            <h2>Welcome to Your Spiritual Growth Portal, Valued Stakeholder!</h2>
+            <p>Synergy Spiritual Solutions Group (SSSG) is the market leader in faith-based innovation and divine deliverance. We empower individuals and organizations to achieve peak spiritual performance by leveraging cutting-edge devotional technologies and biblically-sound, synergized strategies.</p>
+            <p>Our holistic suite of spiritual solutions is designed to optimize your faith journey, enhance your blessed assurance index, and deliver tangible returns on illumination (ROI). Explore our offerings and discover how SSSG can help you unlock unprecedented levels of spiritual capital.</p>
+            <img src="https://via.placeholder.com/1200x300.png?text=SSSG+Q3+Blessing+Growth+Chart+(Upwards+Trend)" alt="Placeholder chart showing growth" style="width:100%; max-width:700px; margin:20px auto; display:block; border-radius:var(--border-radius-corp); border:1px solid var(--corp-border);">
+            <p>We are committed to a Q4 target of +15% aggregate stakeholder joy. Your active participation and investment are key performance indicators for mutual success.</p>
             <div style="text-align:center; margin-top:30px;">
-                <a href="#giving" onclick="openTab(event, 'giving', true)" class="cta-button">✧ Fortify the Archives ✧</a>
+                <a href="#investorRelations" onclick="openTab(event, 'investorRelations', true)" class="cta-button-corp">Explore Investment Tiers</a>
             </div>
         </div>
 
-        <div id="exploringTexts" class="tab-content">
-            <h2>Sacred Scrolls: Comparative Glyphs & Narratives</h2>
-            <p>The core of The Aethel Archives lies in the comparative study of sacred narratives. By examining these powerful texts side-by-side, we unlock new dimensions of understanding and appreciate the multifaceted nature of divine inspiration. Approach with an open mind and a reverent heart.</p>
+        <div id="ourSolutions" class="tab-content">
+            <h2>Our Integrated Spiritual Solutions Portfolio</h2>
+            <p>SSSG offers a diversified portfolio of solutions, meticulously engineered to address the complex spiritual needs of today's dynamic faith marketplace. Each solution is backed by foundational directives and proven methodologies for enhanced spiritual actualization.</p>
             
-            <div class="comparison-section">
-                <h3>🌌 Theme: Genesis - The Cosmic Dawn</h3>
+            <div class="directives-section">
+                <h3>Foundational Directive: Creation & Strategic Alignment (Ref: GEN-QUR.CS.001)</h3>
                 <div class="passage-container">
                     <div class="passage">
-                        <h4>📜 Bible: Genesis 1 - The Elohim Accounts</h4>
-                        <p>"In the beginning God (Elohim) created the heavens and the earth. And the earth was waste and void; and darkness was upon the face of the deep: and the Spirit of God moved upon the face of the waters. And God said, Let there be light: and there was light." (Genesis 1:1-3, KJV)</p>
-                        <p>"And God made the firmament, and divided the waters which were under the firmament from the waters which were above the firmament: and it was so. And God called the firmament Heaven. And the evening and the morning were the second day." (Genesis 1:7-8, KJV)</p>
-                        <p class="passage-source">Source: King James Version (Blue Letter Bible context)</p>
+                        <h4>Biblical Framework: Genesis 1 - Initial Operational Blueprint</h4>
+                        <p>"In the beginning God (Elohim) created the heavens and the earth... And God said, Let there be light: and there was light." (Genesis 1:1-3, KJV Analysis)</p>
+                        <p><strong>Corporate Insight:</strong> Establishes the principle of divine initiative and structured implementation. Our 'Genesis Protocol' for new faith ventures mirrors this orderly and authoritative approach to market entry.</p>
+                        <p class="passage-source">Reference Code: B.GEN.1.1-3</p>
                     </div>
                     <div class="passage">
-                        <h4>📜 Quran: Surah Al-Anbiya & Fussilat - The Divine Decree</h4>
-                        <p>"Have not those who disbelieved known that the heavens and the earth were of one connected entity, then We separated them? And We made from water every living thing. Then will they not believe?" (Quran 21:30, Sahih International)</p>
-                        <p>"Then He directed Himself to the heaven while it was smoke and said to it and to the earth, 'Come [into being], willingly or by compulsion.' They said, 'We have come willingly.'" (Quran 41:11, Sahih International)</p>
-                        <p class="passage-source">Source: Sahih International (Corpus Quran context)</p>
+                        <h4>Quranic Framework: Al-Anbiya 21:30 - Unified Origin & Diversification</h4>
+                        <p>"Have not those who disbelieved known that the heavens and the earth were of one connected entity, then We separated them? And We made from water every living thing." (Quran 21:30, Strategic Application)</p>
+                        <p><strong>Corporate Insight:</strong> Highlights the value of integrated origins followed by strategic diversification. SSSG's 'Unity to Utility' model for spiritual asset management is derived from this core principle.</p>
+                        <p class="passage-source">Reference Code: Q.ANB.21.30</p>
                     </div>
                 </div>
             </div>
 
-            <div class="comparison-section">
-                <h3>🌿 Theme: Stewardship of Creation & Divine Sustenance</h3>
+            <div class="directives-section">
+                <h3>Foundational Directive: Stewardship & Resource Optimization (Ref: STEW.RQ.002)</h3>
                  <div class="passage-container">
                     <div class="passage">
-                        <h4>📜 Bible: Genesis 2 & Psalms - The Garden & Providence</h4>
-                        <p>"And the Lord God took the man, and put him into the garden of Eden to dress it and to keep it." (Genesis 2:15, KJV)</p>
-                        <p>"The eyes of all wait upon thee; and thou givest them their meat in due season. Thou openest thine hand, and satisfiest the desire of every living thing." (Psalm 145:15-16, KJV)</p>
-                        <p class="passage-source">Source: King James Version</p>
+                        <h4>Biblical Framework: Genesis 2:15 - Asset Management Mandate</h4>
+                        <p>"And the Lord God took the man, and put him into the garden of Eden to dress it and to keep it." (Genesis 2:15, KJV Interpretation)</p>
+                        <p><strong>Corporate Insight:</strong> The 'Eden Mandate' underscores our commitment to responsible stewardship of spiritual assets and proactive cultivation of faith environments for optimal yield.</p>
+                        <p class="passage-source">Reference Code: B.GEN.2.15</p>
                     </div>
                     <div class="passage">
-                        <h4>📜 Quran: Surah Al-Baqarah & Al-An'am - Provision & Signs</h4>
-                        <p>"It is He who made the earth subservient to you, so walk in its paths and eat of His provision - and to Him is the resurrection." (Quran 67:15, Sahih International)</p>
-                        <p>"And it is He who sends down rain from the sky, and We produce thereby the growth of all things. We produce from it greenery from which We produce grains arranged in layers. And from the palm trees - of its emerging fruit are clusters hanging low. And [We produce] gardens of grapevines and olives and pomegranates, similar yet varied. Look at [each of] its fruit when it yields and [at] its ripening. Indeed in that are signs for a people who believe." (Quran 6:99, Sahih International)</p>
-                        <p class="passage-source">Source: Sahih International</p>
+                        <h4>Quranic Framework: Al-Baqarah 2:22 - Sustainable Resource Utilization</h4>
+                        <p>"[He] who made for you the earth a bed [spread out] and the sky a ceiling and sent down from the sky, rain and brought forth thereby fruits as provision for you. So do not attribute to Allah equals while you know [that there are none]." (Quran 2:22, Contextual Analysis)</p>
+                        <p><strong>Corporate Insight:</strong> Emphasizes sustainable resource management and leveraging divine provisions. Our 'Barakah Blueprint' for charitable endowments aligns with this directive for maximizing societal and spiritual ROI.</p>
+                        <p class="passage-source">Reference Code: Q.BAQ.2.22</p>
                     </div>
                 </div>
             </div>
-
-             <div class="comparison-section">
-                <h3>✨ Theme: The Nature of Prophecy & Divine Messengers</h3>
-                <div class="passage-container">
-                    <div class="passage">
-                        <h4>📜 Bible: Deuteronomy & Hebrews - The Prophetic Voice</h4>
-                        <p>"The Lord thy God will raise up unto thee a Prophet from the midst of thee, of thy brethren, like unto me; unto him ye shall hearken;" (Deuteronomy 18:15, KJV)</p>
-                        <p>"God, who at sundry times and in divers manners spake in time past unto the fathers by the prophets, Hath in these last days spoken unto us by his Son, whom he hath appointed heir of all things, by whom also he made the worlds;" (Hebrews 1:1-2, KJV)</p>
-                        <p class="passage-source">Source: King James Version</p>
-                    </div>
-                    <div class="passage">
-                        <h4>📜 Quran: Surah Al-Baqarah & Al-Ahzab - The Chain of Messengers</h4>
-                        <p>"The Messenger has believed in what was revealed to him from his Lord, and [so have] the believers. All of them have believed in Allah and His angels and His books and His messengers, [saying], 'We make no distinction between any of His messengers.' And they say, 'We hear and we obey. [We seek] Your forgiveness, our Lord, and to You is the [final] destination.'" (Quran 2:285, Sahih International)</p>
-                        <p>"Muhammad is not the father of [any] one of your men, but [he is] the Messenger of Allah and last of the prophets. And ever is Allah, of all things, Knowing." (Quran 33:40, Sahih International)</p>
-                        <p class="passage-source">Source: Sahih International</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comparison-section">
-                <h3>💖 Theme: Compassion, Forgiveness & Divine Mercy</h3>
-                <div class="passage-container">
-                    <div class="passage">
-                        <h4>📜 Bible: Psalms & Luke - God's Enduring Mercy</h4>
-                        <p>"The Lord is merciful and gracious, slow to anger, and plenteous in mercy. He will not always chide: neither will he keep his anger for ever." (Psalm 103:8-9, KJV)</p>
-                        <p>"Be ye therefore merciful, as your Father also is merciful. Judge not, and ye shall not be judged: condemn not, and ye shall not be condemned: forgive, and ye shall be forgiven:" (Luke 6:36-37, KJV)</p>
-                        <p class="passage-source">Source: King James Version</p>
-                    </div>
-                    <div class="passage">
-                        <h4>📜 Quran: Surah Az-Zumar & Al-Fatihah - The All-Merciful</h4>
-                        <p>"Say, 'O My servants who have transgressed against themselves [by sinning], do not despair of the mercy of Allah. Indeed, Allah forgives all sins. Indeed, it is He who is the Forgiving, the Merciful.'" (Quran 39:53, Sahih International)</p>
-                        <p>"In the name of Allah, the Entirely Merciful, the Especially Merciful. [All] praise is [due] to Allah, Lord of the worlds - The Entirely Merciful, the Especially Merciful," (Quran 1:1-3, Sahih International)</p>
-                        <p class="passage-source">Source: Sahih International</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Add more themes as desired -->
+             <!-- Add more "Foundational Directives" -->
         </div>
 
-        <div id="ourMission" class="tab-content">
-            <h2>Our Beacon: Illuminating Understanding Across Realities 🌌</h2>
-            <p>The Aethel Archives is more than a repository; it is a living beacon, dedicated to projecting currents of wisdom and fostering profound understanding across all seekers. Our multi-faceted mission is to:</p>
-            <ul>
-                <li><strong>Preserve & Curate:</strong> Safeguard and meticulously organize the sacred narratives and wisdom traditions of humanity for timeless access.</li>
-                <li><strong>Illuminate & Educate:</strong> Provide advanced tools and a dynamic environment for in-depth comparative study, fostering intellectual and spiritual growth.</li>
-                <li><strong>Connect & Harmonize:</strong> Forge pathways of dialogue and mutual respect between diverse interpretive traditions and communities of faith.</li>
-                <li><strong>Inspire & Evolve:</strong> Serve as a catalyst for personal revelation, critical thought, and the collective evolution of consciousness.</li>
-                <li><strong>Expand & Sustain:</strong> Continuously enhance the Archives' capabilities and reach through the energy and support of our global community.</li>
-            </ul>
-            <h3>How Your Energy Amplifies The Beacon:</h3>
-            <p>Your contribution, your "sustaining energy," is vital. It allows us to:</p>
-            <ul>
-                <li>Maintain and upgrade the Archive's core infrastructure and ethereal interface.</li>
-                <li>Integrate new textual sources and analytical tools.</li>
-                <li>Develop advanced holographic seminars and interactive learning modules (a conceptual goal).</li>
-                <li>Support scholars and researchers dedicated to this trans-dimensional study.</li>
-                <li>Ensure the Archives remain a freely accessible sanctuary for all seekers.</li>
-            </ul>
-            <p>Join us in this grand endeavor. Become a sustainer of this beacon, and let its light reach further.</p>
-            <div style="text-align: center; margin-top: 40px;">
-                 <a href="#giving" onclick="openTab(event, 'giving', true)" class="cta-button" style="border-color:var(--secondary-glow); color:var(--secondary-glow); box-shadow: 0 0 15px var(--secondary-glow), inset 0 0 10px rgba(255,0,255,0.2);">Amplify The Beacon's Light ✧</a>
+        <div id="thoughtLeadership" class="tab-content">
+            <h2>SSSG Thought Leadership: Paradigms for Peak Piety</h2>
+            <p>Our esteemed board of theological strategists and faith-market analysts regularly publish white papers and strategic briefs on optimizing spiritual workflows and leveraging divine capital.</p>
+            
+            <h3>Featured Publication: "The Synergy of Supplication: A QBR Perspective"</h3>
+            <p>This quarter's flagship report explores the quantifiable impact of synchronized prayer initiatives on key performance indicators such as communal well-being and individual peace metrics. Preliminary data suggests a 12% uplift in stakeholder satisfaction post-implementation of our patented "PrayerGrid™" technology.</p>
+            <img src="https://via.placeholder.com/600x350.png?text=Thought+Leadership+Publication+Cover" alt="Placeholder for publication cover" style="width:100%; max-width:400px; margin:15px 0; border:1px solid var(--corp-border);">
+
+            <h3>Upcoming Webinar: "Faithonomics 101: Diversifying Your Devotional Portfolio"</h3>
+            <p>Join our Chief Spiritual Officer, Dr. Ebenezer Guidepost, for an insightful session on managing your spiritual assets in a volatile karmic market. Learn to identify high-yield blessings and mitigate existential risks. Registration opens Q1.</p>
+            
+            <h3>Core Principle Case Study: Prophetic Communication Channels (Ref: PROP.CC.003)</h3>
+            <div class="passage-container">
+                 <div class="passage">
+                    <h4>Biblical Framework: Hebrews 1:1-2 - Iterative Revelation Protocols</h4>
+                    <p>"God, who at sundry times and in divers manners spake in time past unto the fathers by the prophets, Hath in these last days spoken unto us by his Son..." (Hebrews 1:1-2, KJV System Analysis)</p>
+                    <p><strong>Corporate Insight:</strong> Demonstrates a divine methodology of iterative communication and upgraded revelation deployment. SSSG's 'Version Control Theology' ensures our stakeholders receive the most current and impactful spiritual guidance.</p>
+                    <p class="passage-source">Reference Code: B.HEB.1.1-2</p>
+                </div>
+                <div class="passage">
+                    <h4>Quranic Framework: Al-Baqarah 2:285 - Unified Messenger Acceptance Policy</h4>
+                    <p>"The Messenger has believed in what was revealed to him from his Lord... 'We make no distinction between any of His messengers.' And they say, 'We hear and we obey.'" (Quran 2:285, Policy Interpretation)</p>
+                    <p><strong>Corporate Insight:</strong> Mandates an inclusive acceptance of all validated divine communication channels. Our 'Universal Messenger Protocol' ensures comprehensive spiritual data intake and stakeholder alignment.</p>
+                    <p class="passage-source">Reference Code: Q.BAQ.2.285</p>
+                </div>
             </div>
         </div>
         
-        <div id="insights" class="tab-content">
-            <h2>Lumina Echoes: Reflections from the Aether ✨</h2>
-            <div class="comparison-section">
-                <h3>Transmissions from the Core</h3>
-                <p style="font-size: 1.3em; text-align:center; font-style:italic; color: var(--text-muted); margin-bottom: 30px; font-family:var(--font-secondary);">"Within each sacred verse lies a universe of meaning, waiting for the attuned consciousness to perceive its depth. The Archives are but a lens; the vision is yours." - An Aethel Archive Reflection</p>
+        <div id="impactMetrics" class="tab-content">
+            <h2>Impact Metrics & Stakeholder Endorsements (Q3 Report)</h2>
+            <p>Synergy Spiritual Solutions Group is committed to transparency and quantifiable results. Our Q3 report indicates significant growth in key spiritual performance areas, directly attributable to stakeholder investment and engagement with our proprietary solutions.</p>
+            
+            <h3>Key Performance Indicators (KPIs):</h3>
+            <ul>
+                <li><strong>Stakeholder Joy Index (SJI):</strong> +18% (Exceeding Q3 Target of 15%)</li>
+                <li><strong>Blessing Realization Rate (BRR):</strong> 92% (Up from 88% in Q2)</li>
+                <li><strong>Spiritual Serenity Score (SSS):</strong> Average 8.5/10 (Industry Leading)</li>
+                <li><strong>New Faith Adoptions (NFA):</strong> 3,500+ new stakeholders onboarded.</li>
+            </ul>
+             <img src="https://via.placeholder.com/800x250.png?text=KPI+Dashboard+-+All+Metrics+Trending+Up" alt="Placeholder KPI dashboard" style="width:100%; max-width:600px; margin:20px auto; display:block; border-radius:var(--border-radius-corp); border:1px solid var(--corp-border);">
+
+            <h3>Stakeholder Endorsements:</h3>
+            <div class="endorsement-card">
+                <p class="quote">"Since partnering with SSSG and implementing their 'GraceFlow Maximizer' solution, our congregation's spiritual output has increased by an estimated 22%. The ROI on our faith investment has been phenomenal!"</p>
+                <p class="attribution">Pastor Jim Goodseed, <span>Lead Facilitator, First Synergy Chapel</span></p>
             </div>
-            <div class="comparison-section">
-                <h3>Resonances from Fellow Seekers:</h3>
-                <div class="testimonial-card">
-                    <p>"Navigating the Aethel Archives feels like stepping into a lucid dream of knowledge. The way the texts are interwoven is mind-expanding. This isn't just a website; it's an experience."</p>
-                    <p class="attribution">- Kai S., Neo-Alexandria Sector</p>
-                </div>
-                <div class="testimonial-card">
-                    <p>"The 'Sacred Scrolls' section allowed me to see connections I'd never considered. The visual presentation itself inspires a kind of meditative focus. Truly a gift to seekers everywhere."</p>
-                    <p class="attribution">- Elara V., Cygnus Arm Collective</p>
-                </div>
-                 <div class="testimonial-card">
-                    <p>"To support 'Our Beacon' feels like investing in the future of understanding. The mission is profound, and the execution is breathtaking. I am honored to contribute."</p>
-                    <p class="attribution">- Jax R., Outer Rim Scholars Guild</p>
-                </div>
-                <p style="margin-top:20px; text-align:center; color:var(--text-muted);"><em>Echoes gathered from various nodes of consciousness. For illustrative resonance.</em></p>
+            <div class="endorsement-card">
+                <p class="quote">"SSSG's 'Thought Leadership' webinars have completely revolutionized my approach to personal piety. My Serenity Score is through the roof, and I finally understand the market dynamics of divine favor."</p>
+                <p class="attribution">Brenda Faithful, <span>Platinum Tier Investor</span></p>
             </div>
-            <div style="text-align: center; margin-top: 30px;">
-                 <a href="#giving" onclick="openTab(event, 'giving', true)" class="cta-button">Share Your Energy, Enhance the Echoes ✧</a>
+             <div class="endorsement-card">
+                <p class="quote">"The Q3 Blessings Report was exceptionally detailed. It's reassuring to see such a clear correlation between our collective spiritual investments and the tangible divine dividends being distributed. SSSG delivers!"</p>
+                <p class="attribution">Mr. Al Truistic, <span>Chief Benevolence Officer, GoodWorks Foundation</span></p>
             </div>
         </div>
 
-        <div id="giving" class="tab-content" style="padding:0; background: transparent; box-shadow:none; backdrop-filter:none;">
-            <div class="giving-section">
-                <h2>Sustain the Archives: Power the Beacon 💖</h2>
-                <p>The Aethel Archives are a conduit of timeless wisdom, powered by the collective energy of those who value its light. Your contribution ensures this beacon continues to shine, illuminating paths for seekers across all dimensions.</p>
-                <p><strong>"From a single spark, a star is born; from a shared vision, a universe of understanding unfolds."</strong> - Aethel Archives Proverb</p>
+        <div id="investorRelations" class="tab-content" style="background:var(--corp-secondary);">
+            <div class="investment-section">
+                <h2>Investor Relations: Partner for Spiritual Capital Growth</h2>
+                <p>Unlock unparalleled spiritual dividends by investing in Synergy Spiritual Solutions Group. Our tiered partnership packages offer exclusive benefits and enhanced access to our portfolio of divine deliverables. Your investment fuels innovation and expands our global faith footprint.</p>
+                <p><strong>"Where your treasure is, there will your heart (and spiritual ROI) be also."</strong> - SSSG Reinterpretation (Ref: MAT.6.21.SSSG)</p>
 
-                <div class="donation-options">
-                    <button class="donation-button" onclick="alert('Resonance acknowledged: 50 energy units! Transmission pending... (Demo: No actual energy transfer)')">✧ 50 Units <span style="font-size:0.8em; display:block; opacity:0.7;">Spark</span></button>
-                    <button class="donation-button" onclick="alert('Resonance acknowledged: 100 energy units! Transmission pending... (Demo: No actual energy transfer)')">✧ 100 Units <span style="font-size:0.8em; display:block; opacity:0.7;">Glimmer</span></button>
-                    <button class="donation-button" onclick="alert('Resonance acknowledged: 250 energy units! Transmission pending... (Demo: No actual energy transfer)')">✧ 250 Units <span style="font-size:0.8em; display:block; opacity:0.7;">Shine</span></button>
-                    <button class="donation-button" onclick="alert('Resonance acknowledged: 500 energy units! Transmission pending... (Demo: No actual energy transfer)')">✧ 500 Units <span style="font-size:0.8em; display:block; opacity:0.7;">Radiance</span></button>
+                <div class="investment-options">
+                    <button class="investment-button" onclick="alert('Thank you for your Bronze Tier Investment of $500! Processing your Spiritual Stock Options... (Parody: No actual transaction)')">Bronze Partner: $500 <span style="font-size:0.8em; display:block; opacity:0.7;">(Standard Blessing Package)</span></button>
+                    <button class="investment-button" onclick="alert('Thank you for your Silver Tier Investment of $1,000! Allocating Premium Grace Units... (Parody: No actual transaction)')">Silver Partner: $1,000 <span style="font-size:0.8em; display:block; opacity:0.7;">(Enhanced Serenity Access)</span></button>
+                    <button class="investment-button" onclick="alert('Thank you for your Gold Tier Investment of $5,000! Activating Angelic Oversight Protocol... (Parody: No actual transaction)')">Gold Partner: $5,000 <span style="font-size:0.8em; display:block; opacity:0.7;">(VIP Divine Channeling)</span></button>
+                    <button class="investment-button" onclick="alert('Inquire about our Platinum (>$10,000) 'Archangel Alliance' package for bespoke divine interventions. (Parody)')">Platinum Partner <span style="font-size:0.8em; display:block; opacity:0.7;">(Inquire for Custom Miracles)</span></button>
                 </div>
-                <div class="custom-amount">
-                    <input type="number" placeholder="Custom Energy Transfer">
-                    <button class="donation-button" style="border-color: var(--secondary-glow); color: var(--secondary-glow); box-shadow: 0 0 10px var(--secondary-glow), inset 0 0 8px rgba(255,0,255,0.2);" onclick="alert('Custom resonance acknowledged! Transmission pending... (Demo: No actual energy transfer)')">Channel Your Resonance ✧</button>
+                <div class="custom-investment" style="margin-top:20px;">
+                    <input type="number" placeholder="Custom Investment Amount">
+                    <button class="investment-button" style="background-color:var(--corp-hover-blue); color: var(--corp-text-light);" onclick="alert('Custom Investment Received. Our CFO (Chief Faith Officer) will be in touch. (Parody)')">Initiate Custom Investment</button>
                 </div>
-                <p style="margin-top: 35px; font-size: 0.9em; color: rgba(0,0,0,0.7);"><em>The Aethel Archives operate on conceptual energy. All transfers are symbolic within this demonstration. No actual currency or energy is processed.</em></p>
+                <p style="margin-top: 30px; font-size: 0.9em;"><em>Synergy Spiritual Solutions Group is a conceptual parody. All investment tiers and financial transactions are illustrative and not real. SSSG does not solicit actual funds.</em></p>
             </div>
         </div>
 
     </div>
 
     <footer>
-        <div class="footer-logo-placeholder">◇ THE AETHEL ARCHIVES ◇</div>
-        <p>© Stellar Cycle <span id="year"></span>. All Resonances Catalogued.</p>
-        <p>A Nexus for Comparative Theology & Trans-Dimensional Understanding.</p>
-        <p>
-            <a href="#privacy-link">Transmission Protocols (Privacy)</a> | 
-            <a href="#terms-link">Archive Accords (Terms)</a> | 
-            <a href="#contact-link">Signal the Curators (Contact)</a>
-        </p>
-        <p style="font-size:0.8em; opacity: 0.7; margin-top:20px;"><em>This digital construct is an illustrative interface. The Aethel Archives exist within the conceptual realm.</em></p>
+        <div class="container">
+            <div class="footer-logo-placeholder">Synergy Spiritual Solutions Group, Inc.</div>
+            <p>© <span id="year"></span> SSSG. All Rights Reserved. Member FDIC (Faithful Divine Investment Corporation - Parody).</p>
+            <p>
+                <a href="#privacy-policy">Privacy & Data Governance Policy</a> | 
+                <a href="#terms-of-service">Terms of Spiritual Service</a> | 
+                <a href="#contact-us">Contact Investor Relations</a> |
+                <a href="#careers">Careers in Faith Innovation</a>
+            </p>
+            <p style="font-size:0.8em; opacity: 0.7; margin-top:15px;"><em>This website is a work of parody and fiction, intended for illustrative purposes. It does not represent a real corporation or solicit investments.</em></p>
+        </div>
     </footer>
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Preloader
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
-            setTimeout(() => { // Ensure content is painted
+            // Simulate loading time - in reality, this would depend on assets
+            setTimeout(() => {
                 preloader.classList.add('loaded');
-            }, 500); // Minimum display time for preloader
-             setTimeout(() => { // Actually hide it after transition
-                preloader.style.display = 'none';
-            }, 1000); // Matches transition duration + display time
+                 setTimeout(() => { // Hide after transition
+                    preloader.style.display = 'none';
+                }, 400); // Matches transition duration
+            }, 2000); // Duration of progress bar animation
+
+             // Activate the first tab after preloader is done
+            const firstNavButton = document.querySelector('nav .nav-button');
+            if (firstNavButton) {
+                openTab(null, firstNavButton.getAttribute('onclick').match(/'([^']+)'/)[1]);
+                firstNavButton.classList.add('active');
+            }
         });
 
 
-        function openTab(evt, tabName, isGiveTab = false) {
+        function openTab(evt, tabName, isInvestTab = false) {
             var i, tabcontent, tabbuttons;
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
                 tabcontent[i].classList.remove("active");
             }
-            tabbuttons = document.querySelectorAll("nav .nav-button, nav .give-button-nav");
+            tabbuttons = document.querySelectorAll("nav .nav-button, nav .invest-button-nav");
             for (i = 0; i < tabbuttons.length; i++) {
                 tabbuttons[i].classList.remove("active");
             }
@@ -805,15 +605,15 @@
             
             if (evt && evt.currentTarget) {
                  evt.currentTarget.classList.add("active");
-            } else if (isGiveTab) {
-                const giveNavButton = document.querySelector('nav .give-button-nav');
-                if (giveNavButton) giveNavButton.classList.add('active');
+            } else if (isInvestTab) { // Corrected variable name
+                const investNavButton = document.querySelector('nav .invest-button-nav');
+                if (investNavButton) investNavButton.classList.add('active');
             }
 
-            if (targetTab) {
-                 const navHeight = document.querySelector('nav').offsetHeight || 70;
+            if (targetTab) { // Scroll to top of tab, considering nav
+                 const navHeight = document.querySelector('nav').offsetHeight || 60;
                  const elementPosition = targetTab.getBoundingClientRect().top + window.pageYOffset;
-                 const offsetPosition = elementPosition - navHeight - 30; // Extra padding from nav
+                 const offsetPosition = elementPosition - navHeight - 20; 
 
                  window.scrollTo({
                      top: offsetPosition,
@@ -822,18 +622,7 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', (event) => {
-            // Activate the first tab, ensure preloader logic is separate
-            const firstNavButton = document.querySelector('nav .nav-button');
-            if (firstNavButton && !document.getElementById('preloader').classList.contains('loaded')) { // Check if preloader is done
-                 // Open after preloader or if no preloader
-                openTab(null, firstNavButton.getAttribute('onclick').match(/'([^']+)'/)[1]);
-                firstNavButton.classList.add('active');
-            } else if (firstNavButton) { // If preloader already done (e.g. fast load)
-                 openTab(null, firstNavButton.getAttribute('onclick').match(/'([^']+)'/)[1]);
-                 firstNavButton.classList.add('active');
-            }
-        });
+        // Initial tab opening handled by preloader's 'load' event listener now.
     </script>
 </body>
 </html>
